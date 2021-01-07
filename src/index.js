@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import App from './App.jsx'
+import Bugboard from './BugboardApp.jsx'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Bugboard />
   </React.StrictMode>,
   document.getElementById('root')
 )

@@ -1,7 +1,7 @@
 import React from 'react'
 
-function App() {
+function BugboardApp() {
   return <div>Soon</div>
 }
 
-export default App
+export default BugboardApp
