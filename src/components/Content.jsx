@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import Navigation from './Navigation'
 import ProductList from './ProductList'
 import ProductVersionList from './ProductVersionList'
@@ -17,10 +13,10 @@ function Content() {
         <Route exact path='/'>
           <ProductList />
         </Route>
-        <Route path='/versions'>
+        <Route exact path='/products/:productId/versions'>
           <ProductVersionList />
         </Route>
-        <Route path='/bugs'>
+        <Route exact path='/products/:productId/versions/:versionId'>
           <BugList />
         </Route>
         <Route path='*'>

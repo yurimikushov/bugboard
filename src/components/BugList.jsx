@@ -1,35 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { useParams } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { loadBugs } from '../redux/actions'
 import Bug from './Bug'
 
-const bugs = [
-  {
-    id: 'bug-0001',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, soluta. Nam in libero unde inventore provident nostrum consectetur cupiditate rerum.',
-  },
-  {
-    id: 'bug-0002',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, soluta. Nam in libero unde inventore provident nostrum consectetur cupiditate rerum.',
-  },
-  {
-    id: 'bug-0003',
-    description:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, tempore? Omnis similique ipsum qui fugiat magnam distinctio porro nostrum tenetur voluptatem. Harum quos architecto expedita, numquam inventore non in sit distinctio at quo tempore molestias saepe similique atque, ex maxime!',
-  },
-  {
-    id: 'bug-0004',
-    description:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, tempore? Omnis similique ipsum qui fugiat magnam distinctio porro nostrum tenetur voluptatem. Harum quos architecto expedita, numquam inventore non in sit distinctio at quo tempore molestias saepe similique atque, ex maxime!',
-  },
-  {
-    id: 'bug-0005',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, soluta. Nam in libero unde inventore provident nostrum consectetur cupiditate rerum.',
-  },
-]
+function BugList({ bugs, loadBugs }) {
+  const { productId, versionId } = useParams()
 
-function BugList() {
+  useEffect(() => loadBugs(productId, versionId))
+
   return (
     <div className='versions'>
       <h2>Fixed bugs</h2>
@@ -43,4 +23,17 @@ function BugList() {
   )
 }
 
-export default BugList
+BugList.propTypes = {
+  bugs: PropTypes.array,
+  loadBugs: PropTypes.func,
+}
+
+const mapStateToProps = (state) => ({
+  bugs: state.bugs,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  loadBugs: (productId, versionId) => dispatch(loadBugs(productId, versionId)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BugList)
