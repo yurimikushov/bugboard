@@ -28,7 +28,7 @@ const bugList = [
 
 export default function bugs(state = [], action) {
   switch (action.type) {
-    case 'LOAD_BUGS_LIST':
+    case 'LOAD_BUGS':
       return bugList
     default:
       return state
