@@ -1,26 +1,43 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { useParams } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { loadProductVersions } from '../redux/actions'
 import ProductVersion from './ProductVersion'
 
-const versions = [
-  { title: 'Not fixed' },
-  { title: '1.0.3' },
-  { title: '1.0.2' },
-  { title: '1.0.1' },
-  { title: '1.0.0' },
-  { title: '0.1.0' },
-]
+function ProductVersionList({ productVersions, loadProductVersions }) {
+  const { productId } = useParams()
 
-function ProductVersionList() {
+  useEffect(() => loadProductVersions(productId))
+
   return (
     <div className='versions'>
       <h2>Versions</h2>
       <ul className='list-group list-group-flush'>
-        {versions.map((version) => (
-          <ProductVersion key={version.title} title={version.title} />
+        {productVersions.map((version) => (
+          <ProductVersion
+            key={version.id}
+            productId={productId}
+            versionId={version.id}
+            title={version.title}
+          />
         ))}
       </ul>
     </div>
   )
 }
 
-export default ProductVersionList
+ProductVersionList.propTypes = {
+  productVersions: PropTypes.array,
+  loadProductVersions: PropTypes.func,
+}
+
+const mapStateToProps = (state) => ({
+  productVersions: state.productVersions,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  loadProductVersions: (id) => dispatch(loadProductVersions(id)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductVersionList)

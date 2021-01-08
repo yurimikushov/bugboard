@@ -1,23 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { loadProducts } from '../redux/actions'
 import Product from './Product'
 
-const products = [
-  { title: 'Product #1' },
-  { title: 'Product #2' },
-  { title: 'Product #3' },
-]
+function ProductList({ products, loadProducts }) {
+  useEffect(() => loadProducts())
 
-function ProductList() {
   return (
     <div className='products'>
       <h2>Products</h2>
       <ul className='list-group list-group-flush'>
         {products.map((product) => (
-          <Product key={product.title} title={product.title} />
+          <Product key={product.title} id={product.id} title={product.title} />
         ))}
       </ul>
     </div>
   )
 }
 
-export default ProductList
+ProductList.propTypes = {
+  products: PropTypes.array,
+  loadProducts: PropTypes.func,
+}
+
+const mapStateToProps = (state) => ({
+  products: state.products,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  loadProducts: () => dispatch(loadProducts()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList)

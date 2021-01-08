@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux'
-// import counter from './counter'
+import products from './products'
+import productVersions from './productVersions'
+import bugs from './bugs'
 
 export default combineReducers({
-  //   counter,
+  products,
+  productVersions,
+  bugs,
 })
