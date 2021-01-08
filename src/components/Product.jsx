@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 function Product({ title }) {
   return (
     <li className='list-group-item' key={title}>
-      <a href='/'>{title}</a>
+      <Link className='nav-link p-0' to='/versions'>
+        {title}
+      </Link>
     </li>
   )
 }
