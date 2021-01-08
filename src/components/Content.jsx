@@ -8,6 +8,7 @@ import {
 import Navigation from './Navigation'
 import ProductList from './ProductList'
 import ProductVersionList from './ProductVersionList'
+import BugList from './BugList'
 
 function Content() {
   return (
@@ -20,6 +21,9 @@ function Content() {
           </Route>
           <Route path='/versions'>
             <ProductVersionList />
+          </Route>
+          <Route path='/bugs'>
+            <BugList />
           </Route>
           <Route path='*'>
             <Redirect to='/' />

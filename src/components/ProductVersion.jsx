@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 function ProductVersion({ title }) {
   return (
     <li className='list-group-item'>
-      <Link className='nav-link p-0' to='/'>
+      <Link className='nav-link p-0' to='/bugs'>
         {title}
       </Link>
     </li>

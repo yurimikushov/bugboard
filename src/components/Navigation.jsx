@@ -12,7 +12,7 @@ function Navigation() {
           <Link to='/versions'>Product name</Link>
         </li>
         <li className='breadcrumb-item active' aria-current='page'>
-          <Link to='/'>Product version</Link>
+          <Link to='/bugs'>Product version</Link>
         </li>
       </ol>
     </nav>
