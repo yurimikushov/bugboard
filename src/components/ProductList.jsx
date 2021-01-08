@@ -5,7 +5,7 @@ import { loadProducts } from '../redux/actions'
 import Product from './Product'
 
 function ProductList({ products, loadProducts }) {
-  useEffect(() => loadProducts())
+  useEffect(() => loadProducts(), [])
 
   return (
     <div className='products'>

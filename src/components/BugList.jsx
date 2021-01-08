@@ -8,7 +8,7 @@ import Bug from './Bug'
 function BugList({ bugs, loadBugs }) {
   const { productId, versionId } = useParams()
 
-  useEffect(() => loadBugs(productId, versionId))
+  useEffect(() => loadBugs(productId, versionId), [])
 
   return (
     <div className='versions'>

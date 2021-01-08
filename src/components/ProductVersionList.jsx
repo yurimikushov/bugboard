@@ -8,7 +8,7 @@ import ProductVersion from './ProductVersion'
 function ProductVersionList({ productVersions, loadProductVersions }) {
   const { productId } = useParams()
 
-  useEffect(() => loadProductVersions(productId))
+  useEffect(() => loadProductVersions(productId), [])
 
   return (
     <div className='versions'>
