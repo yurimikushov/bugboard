@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider as StoreProvider } from 'react-redux'
 import store from './redux/store'
 import Header from './components/Header'
@@ -8,10 +9,12 @@ function BugboardApp() {
   return (
     <div style={{ maxWidth: '950px', margin: '0 auto' }}>
       <div className='container vh-100 shadow-lg bg-white'>
-        <Header />
-        <StoreProvider store={store}>
-          <Content />
-        </StoreProvider>
+        <Router>
+          <Header />
+          <StoreProvider store={store}>
+            <Content />
+          </StoreProvider>
+        </Router>
       </div>
     </div>
   )

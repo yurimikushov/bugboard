@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
@@ -13,23 +12,21 @@ import BugList from './BugList'
 function Content() {
   return (
     <main className='container'>
-      <Router>
-        <Navigation />
-        <Switch>
-          <Route exact path='/'>
-            <ProductList />
-          </Route>
-          <Route path='/versions'>
-            <ProductVersionList />
-          </Route>
-          <Route path='/bugs'>
-            <BugList />
-          </Route>
-          <Route path='*'>
-            <Redirect to='/' />
-          </Route>
-        </Switch>
-      </Router>
+      <Navigation />
+      <Switch>
+        <Route exact path='/'>
+          <ProductList />
+        </Route>
+        <Route path='/versions'>
+          <ProductVersionList />
+        </Route>
+        <Route path='/bugs'>
+          <BugList />
+        </Route>
+        <Route path='*'>
+          <Redirect to='/' />
+        </Route>
+      </Switch>
     </main>
   )
 }
