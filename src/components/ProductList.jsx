@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { loadProducts } from '../redux/actions'
 import Product from './Product'
+import Alert from './Alert'
 
 function ProductList({ products, loadProducts }) {
+  // eslint-disable-next-line
   useEffect(() => loadProducts(), [])
 
   return (
@@ -14,6 +16,7 @@ function ProductList({ products, loadProducts }) {
         {products.map((product) => (
           <Product key={product.title} id={product.id} title={product.title} />
         ))}
+        {products.length === 0 && <Alert title='No info'/>}
       </ul>
     </div>
   )

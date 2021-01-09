@@ -4,20 +4,22 @@ import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loadBugs } from '../redux/actions'
 import Bug from './Bug'
+import Alert from './Alert'
 
 function BugList({ bugs, loadBugs }) {
   const { productId, versionId } = useParams()
 
+  // eslint-disable-next-line
   useEffect(() => loadBugs(productId, versionId), [])
 
   return (
     <div className='versions'>
       <h2>Fixed bugs</h2>
       <ul className='list-group list-group-flush'>
-        <hr />
         {bugs.map((bug) => (
           <Bug key={bug.id} id={bug.id} description={bug.description} />
         ))}
+        {bugs.length === 0 && <Alert title='No info'/>}
       </ul>
     </div>
   )

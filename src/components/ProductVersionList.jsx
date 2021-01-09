@@ -4,10 +4,12 @@ import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loadProductVersions } from '../redux/actions'
 import ProductVersion from './ProductVersion'
+import Alert from './Alert'
 
 function ProductVersionList({ productVersions, loadProductVersions }) {
   const { productId } = useParams()
 
+  // eslint-disable-next-line
   useEffect(() => loadProductVersions(productId), [])
 
   return (
@@ -22,6 +24,7 @@ function ProductVersionList({ productVersions, loadProductVersions }) {
             title={version.title}
           />
         ))}
+        {productVersions.length === 0 && <Alert title='No info'/>}
       </ul>
     </div>
   )
