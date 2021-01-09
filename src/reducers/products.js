@@ -30,11 +30,11 @@ const productList = [
   },
 ]
 
-export default function products(state = [], action) {
+export default function products(state = productList, action) {
   switch (action.type) {
     case 'LOAD_PRODUCTS':
       // TODO: fetching from server
-      return productList
+      return state
     default:
       return state
   }

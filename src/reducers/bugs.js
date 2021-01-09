@@ -1,4 +1,4 @@
-const bugList = [
+const commonBugs = [
   {
     id: 'bug-0001',
     description:
@@ -26,11 +26,19 @@ const bugList = [
   },
 ]
 
-export default function bugs(state = [], action) {
+const bugList = [
+  { productId: '1', versionId: 'not_fixed', bugs: commonBugs },
+  { productId: '1', versionId: '1_0_4', bugs: commonBugs },
+  { productId: '1', versionId: '1_0_3', bugs: commonBugs },
+  { productId: '2', versionId: '1_0_2', bugs: commonBugs },
+  { productId: '2', versionId: '1_0_1', bugs: commonBugs },
+]
+
+export default function bugs(state = bugList, action) {
   switch (action.type) {
     case 'LOAD_BUGS':
       // TODO: fetching from server
-      return bugList
+      return state
     default:
       return state
   }

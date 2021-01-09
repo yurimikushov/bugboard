@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Product from './Product'
 import Alert from './Alert'
 
-function ProductList({ products }) {
+function ProductList({ products, loadProducts }) {
   return (
     <div className='products'>
       <h2>Products</h2>
@@ -18,7 +18,8 @@ function ProductList({ products }) {
 }
 
 ProductList.propTypes = {
-  products: PropTypes.array,
+  products: PropTypes.array.isRequired,
+  loadProducts: PropTypes.func.isRequired,
 }
 
 export default ProductList

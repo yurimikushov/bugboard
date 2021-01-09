@@ -1,16 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useParams } from 'react-router-dom'
 import ProductVersion from './ProductVersion'
 import Alert from './Alert'
 
-function ProductVersionList({ products }) {
-  const { productId } = useParams()
-
-  const productVersions = products.filter(
-    (product) => product.id === productId
-  )[0].versions
-
+function ProductVersionList({ productId, productVersions }) {
   return (
     <div className='versions'>
       <h2>Versions</h2>
@@ -30,7 +23,8 @@ function ProductVersionList({ products }) {
 }
 
 ProductVersionList.propTypes = {
-  products: PropTypes.array,
+  productId: PropTypes.string.isRequired,
+  productVersions: PropTypes.array.isRequired,
 }
 
 export default ProductVersionList

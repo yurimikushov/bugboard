@@ -1,8 +1,37 @@
+import React from 'react'
+import { useHistory, useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import ProductVersionList from '../components/ProductVersionList'
 
-const mapStateToProps = (state) => ({
-  products: state.products,
-})
+function ProductVersionListWithParams(props) {
+  const history = useHistory()
+  const { productId } = useParams()
 
-export default connect(mapStateToProps)(ProductVersionList)
+  const mapStateToProps = (state) => {
+    if (state.products.length === 0) {
+      history.push('/')
+      
+      return {
+        productId: '',
+        productVersions: [],
+      }
+    }
+
+    const product = state.products.filter(
+      (product) => product.id === productId
+    )[0]
+
+    return {
+      productId,
+      productVersions: product ? product.versions : [],
+    }
+  }
+
+  const ProductVersionListWithParams = connect(mapStateToProps)(
+    ProductVersionList
+  )
+
+  return <ProductVersionListWithParams {...props} />
+}
+
+export default ProductVersionListWithParams
