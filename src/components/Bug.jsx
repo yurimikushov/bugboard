@@ -11,8 +11,8 @@ function Bug({ id, description }) {
 }
 
 Bug.propTypes = {
-  id: PropTypes.string,
-  description: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 }
 
 export default Bug

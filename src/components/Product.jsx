@@ -13,8 +13,8 @@ function Product({ id, title }) {
 }
 
 Product.propTypes = {
-  id: PropTypes.string,
-  title: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default Product

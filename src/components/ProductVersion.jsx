@@ -16,9 +16,9 @@ function ProductVersion({ productId, versionId, title }) {
 }
 
 ProductVersion.propTypes = {
-  productId: PropTypes.string,
-  versionId: PropTypes.string,
-  title: PropTypes.string,
+  productId: PropTypes.string.isRequired,
+  versionId: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default ProductVersion
