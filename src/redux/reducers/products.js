@@ -7,6 +7,7 @@ const productList = [
 export default function products(state = [], action) {
   switch (action.type) {
     case 'LOAD_PRODUCTS':
+      // TODO: fetching from server
       return productList
     default:
       return state

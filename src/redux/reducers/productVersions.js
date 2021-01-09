@@ -34,6 +34,7 @@ const productVersionList = [
 export default function productVersions(state = [], action) {
   switch (action.type) {
     case 'LOAD_PRODUCT_VERSIONS':
+      // TODO: fetching from server
       return productVersionList.filter(
         (product) => product.id === action.payload.id
       )[0].versions
