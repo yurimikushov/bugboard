@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, useRouteMatch } from 'react-router-dom'
-import { connect } from 'react-redux'
 
 const styles = {
   activeBreadcrumb: {
@@ -15,7 +14,7 @@ const styles = {
 function useBreadcrumbs(products) {
   const matchVersions = useRouteMatch('/products/:productId/versions')
   const matchBugs = useRouteMatch('/products/:productId/versions/:versionId')
-  
+
   const breadcrumbs = [
     {
       title: 'Home',
@@ -77,8 +76,4 @@ Navigation.propTypes = {
   products: PropTypes.array,
 }
 
-const mapStateToProps = (state) => ({
-  products: state.products,
-})
-
-export default connect(mapStateToProps)(Navigation)
+export default Navigation

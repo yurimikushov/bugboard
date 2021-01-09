@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Navigation from './Navigation'
+import Navigation from '../containers/Navigation'
 import ProductList from '../containers/ProductList'
 import ProductVersionList from '../containers/ProductVersionList'
 import BugList from '../containers/BugList'
