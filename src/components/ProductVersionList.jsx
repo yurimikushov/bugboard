@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { useParams } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { loadProductVersions } from '../redux/actions'
 import ProductVersion from './ProductVersion'
 import Alert from './Alert'
 
-function ProductVersionList({ productVersions, loadProductVersions }) {
+function ProductVersionList({ products }) {
   const { productId } = useParams()
 
-  // eslint-disable-next-line
-  useEffect(() => loadProductVersions(productId), [])
+  const productVersions = products.filter(
+    (product) => product.id === productId
+  )[0].versions
 
   return (
     <div className='versions'>
@@ -24,23 +23,14 @@ function ProductVersionList({ productVersions, loadProductVersions }) {
             title={version.title}
           />
         ))}
-        {productVersions.length === 0 && <Alert title='No info'/>}
+        {productVersions.length === 0 && <Alert title='No info' />}
       </ul>
     </div>
   )
 }
 
 ProductVersionList.propTypes = {
-  productVersions: PropTypes.array,
-  loadProductVersions: PropTypes.func,
+  products: PropTypes.array,
 }
 
-const mapStateToProps = (state) => ({
-  productVersions: state.productVersions,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  loadProductVersions: (id) => dispatch(loadProductVersions(id)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductVersionList)
+export default ProductVersionList

@@ -1,5 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link, useRouteMatch } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 const styles = {
   activeBreadcrumb: {
@@ -10,9 +12,11 @@ const styles = {
   },
 }
 
-function useBreadcrumbs() {
+function useBreadcrumbs(products) {
   const matchVersions = useRouteMatch('/products/:productId/versions')
   const matchBugs = useRouteMatch('/products/:productId/versions/:versionId')
+
+  console.log(products)
 
   const breadcrumbs = [
     {
@@ -23,17 +27,24 @@ function useBreadcrumbs() {
   ]
 
   if (matchVersions || matchBugs) {
+    const productId = matchVersions.params.productId
+    const product = products.find((product) => product.id === productId)
+    const productTitle = (product && product.title) || 'Product'
+
     breadcrumbs.push({
-      title: 'Product',
-      href: `/products/${matchVersions.params.productId}/versions`,
+      title: productTitle,
+      href: `/products/${productId}/versions`,
       isActive: matchVersions.isExact,
     })
   }
 
   if (matchBugs) {
+    const productId = matchVersions.params.productId
+    const versionId = matchVersions.params.versionId
+
     breadcrumbs.push({
       title: 'Bugs',
-      href: `/products/${matchBugs.params.productId}/versions/${matchBugs.params.versionId}`,
+      href: `/products/${productId}/versions/${versionId}`,
       isActive: matchBugs.isExact,
     })
   }
@@ -41,8 +52,8 @@ function useBreadcrumbs() {
   return breadcrumbs
 }
 
-function Navigation() {
-  const breadcrumbs = useBreadcrumbs()
+function Navigation({ products }) {
+  const breadcrumbs = useBreadcrumbs(products)
 
   return (
     <nav aria-label='breadcrumb'>
@@ -64,4 +75,12 @@ function Navigation() {
   )
 }
 
-export default Navigation
+Navigation.propTypes = {
+  products: PropTypes.array,
+}
+
+const mapStateToProps = (state) => ({
+  products: state.products,
+})
+
+export default connect(mapStateToProps)(Navigation)

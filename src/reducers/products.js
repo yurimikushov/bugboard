@@ -1,6 +1,7 @@
-const productVersionList = [
+const productList = [
   {
     id: '1',
+    title: 'Product #1',
     versions: [
       { id: 'not_fixed', title: 'Not fixed' },
       { id: '1_0_4', title: '1.0.4' },
@@ -13,6 +14,7 @@ const productVersionList = [
   },
   {
     id: '2',
+    title: 'Product #2',
     versions: [
       { id: 'not_fixed', title: 'Not fixed' },
       { id: '1_0_2', title: '1.0.2' },
@@ -23,17 +25,16 @@ const productVersionList = [
   },
   {
     id: '3',
+    title: 'Product #3',
     versions: [],
   },
 ]
 
-export default function productVersions(state = [], action) {
+export default function products(state = [], action) {
   switch (action.type) {
-    case 'LOAD_PRODUCT_VERSIONS':
+    case 'LOAD_PRODUCTS':
       // TODO: fetching from server
-      return productVersionList.filter(
-        (product) => product.id === action.payload.id
-      )[0].versions
+      return productList
     default:
       return state
   }

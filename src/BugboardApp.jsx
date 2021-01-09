@@ -1,23 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { Provider as StoreProvider } from 'react-redux'
-import store from './redux/store'
 import Header from './components/Header'
 import Content from './components/Content'
 
-function BugboardApp() {
+function BugboardApp({ loadProducts }) {
+  // eslint-disable-next-line
+  useEffect(() => loadProducts(), [])
+
   return (
     <div style={{ maxWidth: '950px', margin: '0 auto' }}>
       <div className='container vh-100 shadow-lg bg-white'>
         <Router>
           <Header />
-          <StoreProvider store={store}>
-            <Content />
-          </StoreProvider>
+          <Content />
         </Router>
       </div>
     </div>
   )
+}
+
+BugboardApp.propTypes = {
+  products: PropTypes.array,
+  loadProducts: PropTypes.func,
 }
 
 export default BugboardApp

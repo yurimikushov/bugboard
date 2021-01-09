@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useParams } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { loadBugs } from '../redux/actions'
 import Bug from './Bug'
 import Alert from './Alert'
 
@@ -30,12 +28,4 @@ BugList.propTypes = {
   loadBugs: PropTypes.func,
 }
 
-const mapStateToProps = (state) => ({
-  bugs: state.bugs,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  loadBugs: (productId, versionId) => dispatch(loadBugs(productId, versionId)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(BugList)
+export default BugList
