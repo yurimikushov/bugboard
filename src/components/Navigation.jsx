@@ -15,9 +15,7 @@ const styles = {
 function useBreadcrumbs(products) {
   const matchVersions = useRouteMatch('/products/:productId/versions')
   const matchBugs = useRouteMatch('/products/:productId/versions/:versionId')
-
-  console.log(products)
-
+  
   const breadcrumbs = [
     {
       title: 'Home',
