@@ -16,7 +16,7 @@ function Content() {
         <Route exact path='/products/:productId/versions'>
           <ProductVersionList />
         </Route>
-        <Route exact path='/products/:productId/versions/:versionId'>
+        <Route exact path='/products/:productId/versions/:versionId/bugs'>
           <BugList />
         </Route>
         <Route path='*'>

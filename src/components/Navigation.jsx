@@ -13,7 +13,7 @@ const styles = {
 
 function useBreadcrumbs(products) {
   const matchVersions = useRouteMatch('/products/:productId/versions')
-  const matchBugs = useRouteMatch('/products/:productId/versions/:versionId')
+  const matchBugs = useRouteMatch('/products/:productId/versions/:versionId/bugs')
 
   const breadcrumbs = [
     {
@@ -41,7 +41,7 @@ function useBreadcrumbs(products) {
 
     breadcrumbs.push({
       title: 'Bugs',
-      href: `/products/${productId}/versions/${versionId}`,
+      href: `/products/${productId}/versions/${versionId}/bugs`,
       isActive: matchBugs.isExact,
     })
   }

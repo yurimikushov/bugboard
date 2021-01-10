@@ -7,7 +7,7 @@ function ProductVersion({ productId, versionId, title }) {
     <li className='list-group-item'>
       <Link
         className='nav-link p-0'
-        to={`/products/${productId}/versions/${versionId}`}
+        to={`/products/${productId}/versions/${versionId}/bugs`}
       >
         {title}
       </Link>
