@@ -4,10 +4,10 @@ import ProductVersion from './ProductVersion'
 import Alert from './Alert'
 
 function ProductVersionList(props) {
-  const { productId, loadProductVersions, productVersions } = props
+  const { productId, fetchProductVersions, productVersions } = props
 
   useEffect(() => {
-    loadProductVersions()
+    fetchProductVersions()
     // eslint-disable-next-line
   }, [])
 
@@ -32,7 +32,7 @@ function ProductVersionList(props) {
 ProductVersionList.propTypes = {
   productId: PropTypes.string.isRequired,
   productVersions: PropTypes.array.isRequired,
-  loadProductVersions: PropTypes.func.isRequired,
+  fetchProductVersions: PropTypes.func.isRequired,
 }
 
 export default ProductVersionList

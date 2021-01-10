@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { loadBugs } from '../actions'
+import { fetchBugs } from '../actions'
 import BugList from '../components/BugList'
 
 function BugListWithParams(props) {
@@ -14,8 +14,8 @@ function BugListWithParams(props) {
   }
 
   const mapDispatchToProps = (dispatch) => ({
-    loadBugs: () => {
-      dispatch(loadBugs(productId, versionId))
+    fetchBugs: () => {
+      dispatch(fetchBugs(productId, versionId))
     },
   })
 

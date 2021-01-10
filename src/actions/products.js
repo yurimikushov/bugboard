@@ -1,3 +1,5 @@
+import { FETCH_PRODUCTS } from '../constants/ActionTypes'
+
 const productList = [
   {
     id: '1',
@@ -13,9 +15,9 @@ const productList = [
   },
 ]
 
-export function loadProducts() {
+export function fetchProducts() {
   return {
-    type: 'LOAD_PRODUCTS',
+    type: FETCH_PRODUCTS,
     payload: productList,
   }
 }

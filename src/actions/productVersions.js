@@ -1,3 +1,5 @@
+import { FETCH_PRODUCT_VERSIONS } from '../constants/ActionTypes'
+
 const productVersions = [
   {
     productId: '1',
@@ -27,9 +29,9 @@ const productVersions = [
   },
 ]
 
-export function loadProductVersions(productId) {
+export function fetchProductVersions(productId) {
   return {
-    type: 'LOAD_PRODUCT_VERSIONS',
+    type: FETCH_PRODUCT_VERSIONS,
     payload: productVersions.filter(
       (product) => product.productId === productId
     )[0].versions,

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import Bug from './Bug'
 import Alert from './Alert'
 
-function BugList({ loadBugs, bugs }) {
+function BugList({ fetchBugs, bugs }) {
   useEffect(() => {
-    loadBugs()
+    fetchBugs()
     // eslint-disable-next-line
   }, [])
 
@@ -24,7 +24,7 @@ function BugList({ loadBugs, bugs }) {
 
 BugList.propTypes = {
   bugs: PropTypes.array.isRequired,
-  loadBugs: PropTypes.func.isRequired,
+  fetchBugs: PropTypes.func.isRequired,
 }
 
 export default BugList

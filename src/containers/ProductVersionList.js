@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { loadProductVersions } from '../actions'
+import { fetchProductVersions } from '../actions'
 import ProductVersionList from '../components/ProductVersionList'
 
 function ProductVersionListWithParams(props) {
@@ -15,8 +15,8 @@ function ProductVersionListWithParams(props) {
   }
 
   const mapDispatchToProps = (dispatch) => ({
-    loadProductVersions: () => {
-      dispatch(loadProductVersions(productId))
+    fetchProductVersions: () => {
+      dispatch(fetchProductVersions(productId))
     },
   })
 

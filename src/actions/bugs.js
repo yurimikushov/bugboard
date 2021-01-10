@@ -1,3 +1,5 @@
+import { FETCH_BUGS } from '../constants/ActionTypes'
+
 const commonBugs = [
   {
     id: 'bug-0001',
@@ -34,13 +36,13 @@ const bugs = [
   { productId: '2', versionId: '1_0_1', bugs: commonBugs },
 ]
 
-export function loadBugs(productId, versionId) {
+export function fetchBugs(productId, versionId) {
   const productVersion = bugs.filter(
     (bug) => bug.productId === productId && bug.versionId === versionId
   )[0]
 
   return {
-    type: 'LOAD_BUGS',
+    type: FETCH_BUGS,
     payload: productVersion ? productVersion.bugs : [],
   }
 }

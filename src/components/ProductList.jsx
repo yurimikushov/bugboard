@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import Product from './Product'
 import Alert from './Alert'
 
-function ProductList({ loadProducts, products }) {
+function ProductList({ fetchProducts, products }) {
   useEffect(() => {
-    loadProducts()
+    fetchProducts()
     // eslint-disable-next-line
   }, [])
 
@@ -24,7 +24,7 @@ function ProductList({ loadProducts, products }) {
 
 ProductList.propTypes = {
   products: PropTypes.array.isRequired,
-  loadProducts: PropTypes.func.isRequired,
+  fetchProducts: PropTypes.func.isRequired,
 }
 
 export default ProductList
