@@ -10,7 +10,7 @@ function BugList({ bugs, loadBugs }) {
   }, [])
 
   return (
-    <div className='versions'>
+    <div className='bugs'>
       <h2>Fixed bugs</h2>
       <ul className='list-group list-group-flush'>
         {bugs.map((bug) => (
