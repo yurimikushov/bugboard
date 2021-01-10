@@ -10,4 +10,8 @@ export const FETCH_PRODUCT_VERSIONS = {
   ERROR: 'ERROR',
 }
 
-export const FETCH_BUGS = 'FETCH_BUGS'
+export const FETCH_BUGS = {
+  FETCHING: 'FETCHING',
+  SUCCESS: 'SUCCESS',
+  ERROR: 'ERROR',
+}

@@ -9,14 +9,14 @@ function BugListWithParams(props) {
 
   const mapStateToProps = (state) => {
     return {
-      bugs: state.bugs,
+      isFetching: state.bugs.isFetching,
+      bugs: state.bugs.data,
+      error: state.bugs.error,
     }
   }
 
   const mapDispatchToProps = (dispatch) => ({
-    fetchBugs: () => {
-      dispatch(fetchBugs(productId, versionId))
-    },
+    fetchBugs: () => dispatch(fetchBugs(productId, versionId)),
   })
 
   const BugListWithParams = connect(

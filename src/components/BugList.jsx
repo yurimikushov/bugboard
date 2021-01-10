@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Bug from './Bug'
 import Alert from './Alert'
 
-function BugList({ fetchBugs, bugs }) {
+function BugList({ fetchBugs, isFetching, error, bugs }) {
   useEffect(() => {
     fetchBugs()
     // eslint-disable-next-line
@@ -12,19 +12,25 @@ function BugList({ fetchBugs, bugs }) {
   return (
     <div className='bugs'>
       <h2>Fixed bugs</h2>
-      <ul className='list-group list-group-flush'>
-        {bugs.map((bug) => (
-          <Bug key={bug.id} id={bug.id} description={bug.description} />
-        ))}
-        {bugs.length === 0 && <Alert title='No info' />}
-      </ul>
+      {isFetching && <Alert title='Loading...' />}
+      {!isFetching && error && <Alert title={error} />}
+      {!isFetching && !error && (
+        <ul className='list-group list-group-flush'>
+          {bugs.map((bug) => (
+            <Bug key={bug.id} id={bug.id} description={bug.description} />
+          ))}
+          {bugs.length === 0 && <Alert title='No info' />}
+        </ul>
+      )}
     </div>
   )
 }
 
 BugList.propTypes = {
-  bugs: PropTypes.array.isRequired,
   fetchBugs: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
+  bugs: PropTypes.array.isRequired,
 }
 
 export default BugList
