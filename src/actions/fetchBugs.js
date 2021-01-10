@@ -48,7 +48,7 @@ export default function fetchBugs(productId, versionId) {
 
     // TODO: add fetch
     new Promise((resolve, reject) => setTimeout(() => resolve(bugs), 500))
-      .then((products) => dispatch(fetchBugsSuccess(products)))
+      .then((bugs) => dispatch(fetchBugsSuccess(bugs)))
       .catch((error) => {
         dispatch(fetchBugsError(error))
       })
@@ -61,11 +61,11 @@ function fetchBugsFetching() {
   }
 }
 
-function fetchBugsSuccess(products) {
+function fetchBugsSuccess(bugs) {
   return {
     type: FETCH_BUGS.SUCCESS,
     payload: {
-      data: products,
+      data: bugs,
     },
   }
 }
