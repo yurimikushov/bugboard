@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import ProductVersion from './ProductVersion'
 import Alert from './Alert'
 
-function ProductVersionList({ productId, productVersions }) {
+function ProductVersionList({ productId, productVersions, loadProductVersions }) {
+  useEffect(() => {
+    loadProductVersions()
+    // eslint-disable-next-line
+  }, [])
+
   return (
     <div className='versions'>
       <h2>Versions</h2>
@@ -25,6 +30,7 @@ function ProductVersionList({ productId, productVersions }) {
 ProductVersionList.propTypes = {
   productId: PropTypes.string.isRequired,
   productVersions: PropTypes.array.isRequired,
+  loadProductVersions: PropTypes.func.isRequired,
 }
 
 export default ProductVersionList

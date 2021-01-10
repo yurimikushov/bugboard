@@ -1,22 +1,28 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { loadBugs } from '../actions'
 import BugList from '../components/BugList'
 
 function BugListWithParams(props) {
   const { productId, versionId } = useParams()
 
   const mapStateToProps = (state) => {
-    const productVersionBugs = state.bugs.filter(
-      (bug) => bug.productId === productId && bug.versionId === versionId
-    )[0]
-
     return {
-      bugs: productVersionBugs ? productVersionBugs.bugs : [],
+      bugs: state.bugs,
     }
   }
 
-  const BugListWithParams = connect(mapStateToProps)(BugList)
+  const mapDispatchToProps = (dispatch) => ({
+    loadBugs: () => {
+      dispatch(loadBugs(productId, versionId))
+    },
+  })
+
+  const BugListWithParams = connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(BugList)
 
   return <BugListWithParams {...props} />
 }
