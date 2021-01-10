@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Product from './Product'
 import Alert from './Alert'
 
-function ProductList({ products, loadProducts }) {
+function ProductList({ loadProducts, products }) {
   useEffect(() => {
     loadProducts()
     // eslint-disable-next-line

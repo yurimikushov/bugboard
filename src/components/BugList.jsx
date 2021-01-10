@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Bug from './Bug'
 import Alert from './Alert'
 
-function BugList({ bugs, loadBugs }) {
+function BugList({ loadBugs, bugs }) {
   useEffect(() => {
     loadBugs()
     // eslint-disable-next-line

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import ProductVersion from './ProductVersion'
 import Alert from './Alert'
 
-function ProductVersionList({ productId, productVersions, loadProductVersions }) {
+function ProductVersionList(props) {
+  const { productId, loadProductVersions, productVersions } = props
+
   useEffect(() => {
     loadProductVersions()
     // eslint-disable-next-line
