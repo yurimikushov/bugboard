@@ -1,8 +1,4 @@
-import {
-  FETCH_PRODUCTS_FETCHING,
-  FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_ERROR,
-} from '../constants/ActionTypes'
+import { FETCH_PRODUCTS } from '../constants/ActionTypes'
 
 const products = [
   {
@@ -34,13 +30,13 @@ export default function fetchProducts() {
 
 function fetchProductsFetching() {
   return {
-    type: FETCH_PRODUCTS_FETCHING,
+    type: FETCH_PRODUCTS.FETCHING,
   }
 }
 
 function fetchProductsSuccess(products) {
   return {
-    type: FETCH_PRODUCTS_SUCCESS,
+    type: FETCH_PRODUCTS.SUCCESS,
     payload: {
       data: products,
     },
@@ -49,7 +45,7 @@ function fetchProductsSuccess(products) {
 
 function fetchProductsError(error) {
   return {
-    type: FETCH_PRODUCTS_ERROR,
+    type: FETCH_PRODUCTS.ERROR,
     payload: {
       error: error,
     },

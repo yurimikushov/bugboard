@@ -1,8 +1,4 @@
-import {
-  FETCH_PRODUCTS_FETCHING,
-  FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_ERROR,
-} from '../constants/ActionTypes'
+import { FETCH_PRODUCTS } from '../constants/ActionTypes'
 
 const initialState = {
   isFetching: false,
@@ -12,18 +8,18 @@ const initialState = {
 
 export default function productsReducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_PRODUCTS_FETCHING:
+    case FETCH_PRODUCTS.FETCHING:
       return {
         ...state,
         isFetching: true,
       }
-    case FETCH_PRODUCTS_SUCCESS:
+    case FETCH_PRODUCTS.SUCCESS:
       return {
         ...state,
         isFetching: false,
         data: action.payload.data,
       }
-    case FETCH_PRODUCTS_ERROR:
+    case FETCH_PRODUCTS.ERROR:
       return {
         ...state,
         isFetching: false,

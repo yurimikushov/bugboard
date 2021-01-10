@@ -1,8 +1,4 @@
-import {
-  FETCH_PRODUCT_VERSIONS_FETCHING,
-  FETCH_PRODUCT_VERSIONS_SUCCESS,
-  FETCH_PRODUCT_VERSIONS_ERROR,
-} from '../constants/ActionTypes'
+import { FETCH_PRODUCT_VERSIONS } from '../constants/ActionTypes'
 
 const productVersions = [
   {
@@ -54,13 +50,13 @@ export default function fetchProductVersions(productId) {
 
 function fetchProductVersionFetching() {
   return {
-    type: FETCH_PRODUCT_VERSIONS_FETCHING,
+    type: FETCH_PRODUCT_VERSIONS.FETCHING,
   }
 }
 
 function fetchProductVersionSuccess(productVersions) {
   return {
-    type: FETCH_PRODUCT_VERSIONS_SUCCESS,
+    type: FETCH_PRODUCT_VERSIONS.SUCCESS,
     payload: {
       data: productVersions,
     },
@@ -69,7 +65,7 @@ function fetchProductVersionSuccess(productVersions) {
 
 function fetchProductVersionError(error) {
   return {
-    type: FETCH_PRODUCT_VERSIONS_ERROR,
+    type: FETCH_PRODUCT_VERSIONS.ERROR,
     payload: {
       error: error,
     },

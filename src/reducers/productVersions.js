@@ -1,8 +1,4 @@
-import {
-  FETCH_PRODUCT_VERSIONS_FETCHING,
-  FETCH_PRODUCT_VERSIONS_SUCCESS,
-  FETCH_PRODUCT_VERSIONS_ERROR,
-} from '../constants/ActionTypes'
+import { FETCH_PRODUCT_VERSIONS } from '../constants/ActionTypes'
 
 const initialState = {
   isFetching: false,
@@ -12,18 +8,18 @@ const initialState = {
 
 export default function productVersionsReducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_PRODUCT_VERSIONS_FETCHING:
+    case FETCH_PRODUCT_VERSIONS.FETCHING:
       return {
         ...state,
         isFetching: true,
       }
-    case FETCH_PRODUCT_VERSIONS_SUCCESS:
+    case FETCH_PRODUCT_VERSIONS.SUCCESS:
       return {
         ...state,
         isFetching: false,
         data: action.payload.data,
       }
-    case FETCH_PRODUCT_VERSIONS_ERROR:
+    case FETCH_PRODUCT_VERSIONS.ERROR:
       return {
         ...state,
         isFetching: false,
