@@ -10,14 +10,14 @@ function ProductVersionListWithParams(props) {
   const mapStateToProps = (state) => {
     return {
       productId,
-      productVersions: state.productVersions,
+      isFetching: state.productVersions.isFetching,
+      productVersions: state.productVersions.data,
+      error: state.productVersions.error,
     }
   }
 
   const mapDispatchToProps = (dispatch) => ({
-    fetchProductVersions: () => {
-      dispatch(fetchProductVersions(productId))
-    },
+    fetchProductVersions: () => dispatch(fetchProductVersions(productId)),
   })
 
   const ProductVersionListWithParams = connect(

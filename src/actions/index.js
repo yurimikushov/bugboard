@@ -1,3 +1,3 @@
 export { default as fetchProducts } from './fetchProducts'
-export { fetchProductVersions } from './productVersions'
+export { default as fetchProductVersions } from './fetchProductVersions'
 export { fetchBugs } from './bugs'
