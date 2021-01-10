@@ -13,7 +13,6 @@ function ProductList({ fetchProducts, isFetching, error, products }) {
     <div className='products'>
       <h2>Products</h2>
       {isFetching && <Alert title='Loading...' />}
-      {!isFetching && error && <Alert title={error} />}
       {!isFetching && !error && (
         <ul className='list-group list-group-flush'>
           {products.map((product) => (
@@ -22,6 +21,7 @@ function ProductList({ fetchProducts, isFetching, error, products }) {
           {products.length === 0 && <Alert title='No info' />}
         </ul>
       )}
+      {!isFetching && error && <Alert title={error} />}
     </div>
   )
 }

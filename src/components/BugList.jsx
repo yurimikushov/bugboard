@@ -13,7 +13,6 @@ function BugList({ fetchBugs, isFetching, error, bugs }) {
     <div className='bugs'>
       <h2>Fixed bugs</h2>
       {isFetching && <Alert title='Loading...' />}
-      {!isFetching && error && <Alert title={error} />}
       {!isFetching && !error && (
         <ul className='list-group list-group-flush'>
           {bugs.map((bug) => (
@@ -22,6 +21,7 @@ function BugList({ fetchBugs, isFetching, error, bugs }) {
           {bugs.length === 0 && <Alert title='No info' />}
         </ul>
       )}
+      {!isFetching && error && <Alert title={error} />}
     </div>
   )
 }

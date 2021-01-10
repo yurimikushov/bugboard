@@ -21,7 +21,6 @@ function ProductVersionList(props) {
     <div className='versions'>
       <h2>Versions</h2>
       {isFetching && <Alert title='Loading...' />}
-      {!isFetching && error && <Alert title={error} />}
       {!isFetching && !error && (
         <ul className='list-group list-group-flush'>
           {productVersions.map((version) => (
@@ -35,6 +34,7 @@ function ProductVersionList(props) {
           {productVersions.length === 0 && <Alert title='No info' />}
         </ul>
       )}
+      {!isFetching && error && <Alert title={error} />}
     </div>
   )
 }
