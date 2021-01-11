@@ -9,19 +9,24 @@ function BugList({ fetchBugs, isFetching, error, bugs }) {
     // eslint-disable-next-line
   }, [])
 
+  const needToShowLoader = isFetching
+  const needToShowBugs = !isFetching && !error && bugs.length > 0
+  const needToShowNoInfoAlert = !isFetching && !error && bugs.length === 0
+  const needToShowErrorAlert = !!error
+
   return (
     <div className='bugs'>
       <h2>Fixed bugs</h2>
-      {isFetching && <Alert title='Loading...' />}
-      {!isFetching && !error && (
+      {needToShowLoader && <Alert title='Loading...' />}
+      {needToShowBugs && (
         <ul className='list-group list-group-flush'>
           {bugs.map((bug) => (
             <Bug key={bug.id} id={bug.id} description={bug.description} />
           ))}
-          {bugs.length === 0 && <Alert title='No info' />}
         </ul>
       )}
-      {!isFetching && error && <Alert title={error} />}
+      {needToShowNoInfoAlert && <Alert title='No info' />}
+      {needToShowErrorAlert && <Alert title={error} />}
     </div>
   )
 }

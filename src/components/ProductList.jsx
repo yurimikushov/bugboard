@@ -9,19 +9,24 @@ function ProductList({ fetchProducts, isFetching, error, products }) {
     // eslint-disable-next-line
   }, [])
 
+  const needToShowLoader = isFetching
+  const needToShowProducts = !isFetching && !error && products.length > 0
+  const needToShowNoInfoAlert = !isFetching && !error && products.length === 0
+  const needToShowErrorAlert = !!error
+
   return (
     <div className='products'>
       <h2>Products</h2>
-      {isFetching && <Alert title='Loading...' />}
-      {!isFetching && !error && (
+      {needToShowLoader && <Alert title='Loading...' />}
+      {needToShowProducts && (
         <ul className='list-group list-group-flush'>
           {products.map((product) => (
             <Product key={product.id} id={product.id} title={product.title} />
           ))}
-          {products.length === 0 && <Alert title='No info' />}
         </ul>
       )}
-      {!isFetching && error && <Alert title={error} />}
+      {needToShowNoInfoAlert && <Alert title='No info' />}
+      {needToShowErrorAlert && <Alert title={error} />}
     </div>
   )
 }

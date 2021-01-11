@@ -17,11 +17,16 @@ function ProductVersionList(props) {
     // eslint-disable-next-line
   }, [])
 
+  const needToShowLoader = isFetching
+  const needToShowProductVersions = !isFetching && !error && productVersions.length > 0
+  const needToShowNoInfoAlert = !isFetching && !error && productVersions.length === 0
+  const needToShowErrorAlert = !!error
+
   return (
     <div className='versions'>
       <h2>Versions</h2>
-      {isFetching && <Alert title='Loading...' />}
-      {!isFetching && !error && (
+      {needToShowLoader && <Alert title='Loading...' />}
+      {needToShowProductVersions && (
         <ul className='list-group list-group-flush'>
           {productVersions.map((version) => (
             <ProductVersion
@@ -31,10 +36,10 @@ function ProductVersionList(props) {
               title={version.title}
             />
           ))}
-          {productVersions.length === 0 && <Alert title='No info' />}
         </ul>
       )}
-      {!isFetching && error && <Alert title={error} />}
+      {needToShowNoInfoAlert && <Alert title='No info' />}
+      {needToShowErrorAlert && <Alert title={error} />}
     </div>
   )
 }
