@@ -7,14 +7,12 @@ import ProductVersionList from '../components/ProductVersionList'
 function ProductVersionListWithParams(props) {
   const { productId } = useParams()
 
-  const mapStateToProps = (state) => {
-    return {
-      productId,
-      isFetching: state.productVersions.isFetching,
-      productVersions: state.productVersions.data,
-      error: state.productVersions.error,
-    }
-  }
+  const mapStateToProps = (state) => ({
+    productId,
+    isFetching: state.productVersions.isFetching,
+    productVersions: state.productVersions.data,
+    error: state.productVersions.error,
+  })
 
   const mapDispatchToProps = (dispatch) => ({
     fetchProductVersions: () => dispatch(fetchProductVersions(productId)),

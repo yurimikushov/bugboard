@@ -7,13 +7,11 @@ import BugList from '../components/BugList'
 function BugListWithParams(props) {
   const { productId, versionId } = useParams()
 
-  const mapStateToProps = (state) => {
-    return {
-      isFetching: state.bugs.isFetching,
-      bugs: state.bugs.data,
-      error: state.bugs.error,
-    }
-  }
+  const mapStateToProps = (state) => ({
+    isFetching: state.bugs.isFetching,
+    bugs: state.bugs.data,
+    error: state.bugs.error,
+  })
 
   const mapDispatchToProps = (dispatch) => ({
     fetchBugs: () => dispatch(fetchBugs(productId, versionId)),
