@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
-import Alert from './Alert'
+import Spinner from './Spinner'
+import InfoAlert from './InfoAlert'
+import ErrorAlert from './ErrorAlert'
 
 function ProductList({ fetchProducts, isFetching, error, products }) {
   useEffect(() => {
@@ -17,7 +19,7 @@ function ProductList({ fetchProducts, isFetching, error, products }) {
   return (
     <div className='products'>
       <h2>Products</h2>
-      {needToShowLoader && <Alert title='Loading...' />}
+      {needToShowLoader && <Spinner />}
       {needToShowProducts && (
         <ul className='list-group list-group-flush'>
           {products.map((product) => (
@@ -25,8 +27,8 @@ function ProductList({ fetchProducts, isFetching, error, products }) {
           ))}
         </ul>
       )}
-      {needToShowNoInfoAlert && <Alert title='No info' />}
-      {needToShowErrorAlert && <Alert title={error} />}
+      {needToShowNoInfoAlert && <InfoAlert text='No info' />}
+      {needToShowErrorAlert && <ErrorAlert errorText={error} />}
     </div>
   )
 }

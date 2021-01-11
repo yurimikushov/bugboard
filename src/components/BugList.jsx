@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Bug from './Bug'
-import Alert from './Alert'
+import Spinner from './Spinner'
+import InfoAlert from './InfoAlert'
+import ErrorAlert from './ErrorAlert'
 
 function BugList({ fetchBugs, isFetching, error, bugs }) {
   useEffect(() => {
@@ -17,7 +19,7 @@ function BugList({ fetchBugs, isFetching, error, bugs }) {
   return (
     <div className='bugs'>
       <h2>Fixed bugs</h2>
-      {needToShowLoader && <Alert title='Loading...' />}
+      {needToShowLoader && <Spinner />}
       {needToShowBugs && (
         <ul className='list-group list-group-flush'>
           {bugs.map((bug) => (
@@ -25,8 +27,8 @@ function BugList({ fetchBugs, isFetching, error, bugs }) {
           ))}
         </ul>
       )}
-      {needToShowNoInfoAlert && <Alert title='No info' />}
-      {needToShowErrorAlert && <Alert title={error} />}
+      {needToShowNoInfoAlert && <InfoAlert text='No info' />}
+      {needToShowErrorAlert && <ErrorAlert errorText={error} />}
     </div>
   )
 }

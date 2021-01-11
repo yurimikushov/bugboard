@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import ProductVersion from './ProductVersion'
-import Alert from './Alert'
+import Spinner from './Spinner'
+import InfoAlert from './InfoAlert'
+import ErrorAlert from './ErrorAlert'
 
 function ProductVersionList(props) {
   const {
@@ -25,7 +27,7 @@ function ProductVersionList(props) {
   return (
     <div className='versions'>
       <h2>Versions</h2>
-      {needToShowLoader && <Alert title='Loading...' />}
+      {needToShowLoader && <Spinner />}
       {needToShowProductVersions && (
         <ul className='list-group list-group-flush'>
           {productVersions.map((version) => (
@@ -38,8 +40,8 @@ function ProductVersionList(props) {
           ))}
         </ul>
       )}
-      {needToShowNoInfoAlert && <Alert title='No info' />}
-      {needToShowErrorAlert && <Alert title={error} />}
+      {needToShowNoInfoAlert && <InfoAlert text='No info' />}
+      {needToShowErrorAlert && <ErrorAlert errorText={error} />}
     </div>
   )
 }
