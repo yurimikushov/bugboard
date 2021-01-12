@@ -1,18 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { ConnectedRouter } from 'connected-react-router'
 import { Provider as StoreProvider } from 'react-redux'
-import store from './store'
+import store, { history } from './store'
 import './index.css'
 import Bugboard from './BugboardApp'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <StoreProvider store={store}>
+    <StoreProvider store={store}>
+      <ConnectedRouter history={history}>
         <Bugboard />
-      </StoreProvider>
-    </Router>
+      </ConnectedRouter>
+    </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
