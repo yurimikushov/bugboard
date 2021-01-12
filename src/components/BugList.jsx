@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Bug from './Bug'
 import Spinner from './Spinner'
@@ -6,8 +7,10 @@ import InfoAlert from './InfoAlert'
 import ErrorAlert from './ErrorAlert'
 
 function BugList({ fetchBugs, isFetching, error, bugs }) {
+  const { productId, versionId } = useParams()
+
   useEffect(() => {
-    fetchBugs()
+    fetchBugs(productId, versionId)
     // eslint-disable-next-line
   }, [])
 

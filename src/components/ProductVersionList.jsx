@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ProductVersion from './ProductVersion'
 import Spinner from './Spinner'
@@ -6,22 +7,19 @@ import InfoAlert from './InfoAlert'
 import ErrorAlert from './ErrorAlert'
 
 function ProductVersionList(props) {
-  const {
-    productId,
-    fetchProductVersions,
-    isFetching,
-    error,
-    productVersions,
-  } = props
+  const { fetchProductVersions, isFetching, error, productVersions } = props
+  const { productId } = useParams()
 
   useEffect(() => {
-    fetchProductVersions()
+    fetchProductVersions(productId)
     // eslint-disable-next-line
   }, [])
 
   const needToShowLoader = isFetching
-  const needToShowProductVersions = !isFetching && !error && productVersions.length > 0
-  const needToShowNoInfoAlert = !isFetching && !error && productVersions.length === 0
+  const needToShowProductVersions =
+    !isFetching && !error && productVersions.length > 0
+  const needToShowNoInfoAlert =
+    !isFetching && !error && productVersions.length === 0
   const needToShowErrorAlert = !!error
 
   return (
@@ -47,7 +45,6 @@ function ProductVersionList(props) {
 }
 
 ProductVersionList.propTypes = {
-  productId: PropTypes.string.isRequired,
   fetchProductVersions: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
