@@ -1,30 +1,19 @@
 import { FETCH_PRODUCTS } from '../constants/ActionTypes'
 
-const products = [
-  {
-    id: '1',
-    title: 'Product #1',
-  },
-  {
-    id: '2',
-    title: 'Product #2',
-  },
-  {
-    id: '3',
-    title: 'Product #3',
-  },
-]
-
 export default function fetchProducts() {
   return (dispatch) => {
     dispatch(fetchProductsFetching())
 
-    // TODO: add fetch
-    new Promise((resolve, reject) => setTimeout(() => resolve(products), 1000))
-      .then((products) => dispatch(fetchProductsSuccess(products)))
-      .catch((error) => {
-        dispatch(fetchProductsError(error))
+    fetch('http://localhost:3004/products')
+      .then((res) => {
+        if (!res.ok) {
+          return Promise.reject(res)
+        }
+
+        return res.json()
       })
+      .then((products) => dispatch(fetchProductsSuccess(products)))
+      .catch(() => dispatch(fetchProductsError("Couldn't get data :(")))
   }
 }
 
