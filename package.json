@@ -12,7 +12,7 @@
     "eject": "react-scripts eject",
     "eslint": "eslint . --ext .js --ext .jsx",
     "stylelint": "stylelint \"**/*.css\"",
-    "fake-api": "json-server fake-api.json --watch --port 3004"
+    "fake-api": "json-server fake-api.json --routes fake-api-routes.json --watch --delay 500 --port 3004"
   },
   "dependencies": {
     "connected-react-router": "^6.8.0",

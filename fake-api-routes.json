@@ -1,0 +1,7 @@
+{
+  "/products": "/products",
+  "/products/:productId": "/products/:productId",
+  "/products/:productId/versions": "/versions",
+  "/products/:productId/versions/:versionId": "/versions/:versionId",
+  "/products/:productId/versions/:versionId/bugs": "/bugs"
+}
