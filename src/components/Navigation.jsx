@@ -11,26 +11,24 @@ const styles = {
   },
 }
 
-function Navigation({ breadcrumbs }) {
-  return (
-    <nav aria-label='breadcrumb'>
-      <ol className='breadcrumb mt-2 mb-2'>
-        {breadcrumbs.map((breadcrumb) => {
-          return (
-            <li className='breadcrumb-item' key={breadcrumb.title}>
-              <Link
-                to={breadcrumb.href}
-                style={breadcrumb.isActive ? styles.activeBreadcrumb : null}
-              >
-                {breadcrumb.title}
-              </Link>
-            </li>
-          )
-        })}
-      </ol>
-    </nav>
-  )
-}
+const Navigation = ({ breadcrumbs }) => (
+  <nav aria-label='breadcrumb'>
+    <ol className='breadcrumb mt-2 mb-2'>
+      {breadcrumbs.map((breadcrumb) => {
+        return (
+          <li className='breadcrumb-item' key={breadcrumb.title}>
+            <Link
+              to={breadcrumb.href}
+              style={breadcrumb.isActive ? styles.activeBreadcrumb : null}
+            >
+              {breadcrumb.title}
+            </Link>
+          </li>
+        )
+      })}
+    </ol>
+  </nav>
+)
 
 Navigation.propTypes = {
   breadcrumbs: PropTypes.array,

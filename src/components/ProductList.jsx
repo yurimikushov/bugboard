@@ -5,7 +5,7 @@ import Spinner from './Spinner'
 import InfoAlert from './InfoAlert'
 import ErrorAlert from './ErrorAlert'
 
-function ProductList({ fetchProducts, isFetching, error, products }) {
+const ProductList = ({ fetchProducts, isFetching, error, products }) => {
   useEffect(() => {
     fetchProducts()
     // eslint-disable-next-line

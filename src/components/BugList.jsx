@@ -6,7 +6,7 @@ import Spinner from './Spinner'
 import InfoAlert from './InfoAlert'
 import ErrorAlert from './ErrorAlert'
 
-function BugList({ fetchBugs, isFetching, error, bugs }) {
+const BugList = ({ fetchBugs, isFetching, error, bugs })  => {
   const { productId, versionId } = useParams()
 
   useEffect(() => {

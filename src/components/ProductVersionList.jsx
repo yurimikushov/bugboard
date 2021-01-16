@@ -6,7 +6,7 @@ import Spinner from './Spinner'
 import InfoAlert from './InfoAlert'
 import ErrorAlert from './ErrorAlert'
 
-function ProductVersionList(props) {
+const ProductVersionList = (props) => {
   const { fetchProductVersions, isFetching, error, productVersions } = props
   const { productId } = useParams()
 
