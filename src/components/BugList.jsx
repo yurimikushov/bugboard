@@ -2,7 +2,7 @@ import React  from 'react'
 import PropTypes from 'prop-types'
 import Bug from './Bug'
 import Spinner from './Spinner'
-import InfoAlert from './InfoAlert'
+import NoInfoAlert from './NoInfoAlert'
 import ErrorAlert from './ErrorAlert'
 
 const BugList = ({ bugs, isFetching, error })  => {
@@ -22,7 +22,7 @@ const BugList = ({ bugs, isFetching, error })  => {
           ))}
         </ul>
       )}
-      {needToShowNoInfoAlert && <InfoAlert text='No info' />}
+      {needToShowNoInfoAlert && <NoInfoAlert />}
       {needToShowErrorAlert && <ErrorAlert errorText={error} />}
     </div>
   )
