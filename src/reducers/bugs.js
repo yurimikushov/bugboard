@@ -6,7 +6,7 @@ const initialState = {
   error: '',
 }
 
-export default function bugsReducer(state = initialState, action) {
+const bugsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_BUGS.FETCHING:
       return {
@@ -29,3 +29,5 @@ export default function bugsReducer(state = initialState, action) {
       return state
   }
 }
+
+export default bugsReducer

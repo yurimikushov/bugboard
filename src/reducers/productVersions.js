@@ -6,7 +6,7 @@ const initialState = {
   error: '',
 }
 
-export default function productVersionsReducer(state = initialState, action) {
+const productVersionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PRODUCT_VERSIONS.FETCHING:
       return {
@@ -29,3 +29,5 @@ export default function productVersionsReducer(state = initialState, action) {
       return state
   }
 }
+
+export default productVersionsReducer

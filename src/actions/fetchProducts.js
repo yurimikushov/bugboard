@@ -1,42 +1,36 @@
 import { FETCH_PRODUCTS } from '../constants/ActionTypes'
 
-export default function fetchProducts() {
-  return (dispatch) => {
-    dispatch(fetchProductsFetching())
+const fetchProductsFetching = () => ({
+  type: FETCH_PRODUCTS.FETCHING,
+})
 
-    fetch('http://localhost:3004/products')
-      .then((res) => {
-        if (!res.ok) {
-          return Promise.reject(res)
-        }
+const fetchProductsSuccess = (products) => ({
+  type: FETCH_PRODUCTS.SUCCESS,
+  payload: {
+    data: products,
+  },
+})
 
-        return res.json()
-      })
-      .then((products) => dispatch(fetchProductsSuccess(products)))
-      .catch(() => dispatch(fetchProductsError("Couldn't get data :(")))
-  }
+const fetchProductsError = (error) => ({
+  type: FETCH_PRODUCTS.ERROR,
+  payload: {
+    error: error,
+  },
+})
+
+const fetchProducts = () => (dispatch) => {
+  dispatch(fetchProductsFetching())
+
+  fetch('http://localhost:3004/products')
+    .then((res) => {
+      if (!res.ok) {
+        return Promise.reject(res)
+      }
+
+      return res.json()
+    })
+    .then((products) => dispatch(fetchProductsSuccess(products)))
+    .catch(() => dispatch(fetchProductsError("Couldn't get data :(")))
 }
 
-function fetchProductsFetching() {
-  return {
-    type: FETCH_PRODUCTS.FETCHING,
-  }
-}
-
-function fetchProductsSuccess(products) {
-  return {
-    type: FETCH_PRODUCTS.SUCCESS,
-    payload: {
-      data: products,
-    },
-  }
-}
-
-function fetchProductsError(error) {
-  return {
-    type: FETCH_PRODUCTS.ERROR,
-    payload: {
-      error: error,
-    },
-  }
-}
+export default fetchProducts

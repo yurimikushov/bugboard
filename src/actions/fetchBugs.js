@@ -1,47 +1,40 @@
 import { FETCH_BUGS } from '../constants/ActionTypes'
 
-export default function fetchBugs(productId, versionId) {
-  return (dispatch) => {
-    dispatch(fetchBugsFetching())
+const fetchBugsFetching = () => ({
+  type: FETCH_BUGS.FETCHING,
+})
 
-    fetch(
-      `http://localhost:3004/products/${productId}/versions/${versionId}/bugs`
-    )
-      .then((res) => {
-        if (!res.ok) {
-          return Promise.reject(res)
-        }
+const fetchBugsSuccess = (bugs) => ({
+  type: FETCH_BUGS.SUCCESS,
+  payload: {
+    data: bugs,
+  },
+})
 
-        return res.json()
-      })
-      .then((bugs) => dispatch(fetchBugsSuccess(bugs)))
-      .catch((err) => {
-        console.log(err)
-        dispatch(fetchBugsError("Couldn't get data :("))
-      })
-  }
+const fetchBugsError = (error) => ({
+  type: FETCH_BUGS.ERROR,
+  payload: {
+    error: error,
+  },
+})
+
+const fetchBugs = (productId, versionId) => (dispatch) => {
+  dispatch(fetchBugsFetching())
+
+  fetch(
+    `http://localhost:3004/products/${productId}/versions/${versionId}/bugs`
+  )
+    .then((res) => {
+      if (!res.ok) {
+        return Promise.reject(res)
+      }
+
+      return res.json()
+    })
+    .then((bugs) => dispatch(fetchBugsSuccess(bugs)))
+    .catch(() => {
+      dispatch(fetchBugsError("Couldn't get data :("))
+    })
 }
 
-function fetchBugsFetching() {
-  return {
-    type: FETCH_BUGS.FETCHING,
-  }
-}
-
-function fetchBugsSuccess(bugs) {
-  return {
-    type: FETCH_BUGS.SUCCESS,
-    payload: {
-      data: bugs,
-    },
-  }
-}
-
-function fetchBugsError(error) {
-  return {
-    type: FETCH_BUGS.ERROR,
-    payload: {
-      error: error,
-    },
-  }
-}
+export default fetchBugs
