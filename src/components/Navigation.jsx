@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, useRouteMatch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const styles = {
   activeBreadcrumb: {
@@ -11,47 +11,7 @@ const styles = {
   },
 }
 
-function useBreadcrumbs(products) {
-  const matchVersions = useRouteMatch('/products/:productId/versions')
-  const matchBugs = useRouteMatch('/products/:productId/versions/:versionId/bugs')
-
-  const breadcrumbs = [
-    {
-      title: 'Home',
-      href: '/',
-      isActive: !matchVersions && !matchBugs,
-    },
-  ]
-
-  if (matchVersions || matchBugs) {
-    const productId = matchVersions.params.productId
-    const product = products.find((product) => product.id === productId)
-    const productTitle = (product && product.title) || 'Product'
-
-    breadcrumbs.push({
-      title: productTitle,
-      href: `/products/${productId}/versions`,
-      isActive: matchVersions.isExact,
-    })
-  }
-
-  if (matchBugs) {
-    const productId = matchVersions.params.productId
-    const versionId = matchVersions.params.versionId
-
-    breadcrumbs.push({
-      title: 'Bugs',
-      href: `/products/${productId}/versions/${versionId}/bugs`,
-      isActive: matchBugs.isExact,
-    })
-  }
-
-  return breadcrumbs
-}
-
-function Navigation({ products }) {
-  const breadcrumbs = useBreadcrumbs(products)
-
+function Navigation({ breadcrumbs }) {
   return (
     <nav aria-label='breadcrumb'>
       <ol className='breadcrumb mt-2 mb-2'>
@@ -73,7 +33,7 @@ function Navigation({ products }) {
 }
 
 Navigation.propTypes = {
-  products: PropTypes.array,
+  breadcrumbs: PropTypes.array,
 }
 
 export default Navigation
