@@ -1,3 +1,3 @@
-export { getProducts } from './products'
-export { getProductVersions } from './productVersions'
-export { getBugs } from './bugs'
+export { fetchProducts } from './products'
+export { fetchProductVersions } from './productVersions'
+export { fetchBugs } from './bugs'

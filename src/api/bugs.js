@@ -1,4 +1,4 @@
-export const getBugs = (productId, versionId) =>
+export const fetchBugs = (productId, versionId) =>
   fetch(
     `http://localhost:3004/products/${productId}/versions/${versionId}/bugs`
   ).then((res) => {

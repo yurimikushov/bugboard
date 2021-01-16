@@ -1,5 +1,5 @@
 import { FETCH_PRODUCTS } from '../constants/action-types'
-import { getProducts } from '../api'
+import { fetchProducts as fetchProductList } from '../api'
 
 const fetchProductsFetching = () => ({
   type: FETCH_PRODUCTS.FETCHING,
@@ -22,7 +22,7 @@ const fetchProductsError = (error) => ({
 const fetchProducts = () => (dispatch) => {
   dispatch(fetchProductsFetching())
 
-  getProducts()
+  fetchProductList()
     .then((products) => dispatch(fetchProductsSuccess(products)))
     .catch(() => dispatch(fetchProductsError("Couldn't get data :(")))
 }

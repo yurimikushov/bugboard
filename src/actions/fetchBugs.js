@@ -1,5 +1,5 @@
 import { FETCH_BUGS } from '../constants/action-types'
-import { getBugs } from '../api'
+import { fetchBugs as fetchBugList } from '../api'
 
 const fetchBugsFetching = () => ({
   type: FETCH_BUGS.FETCHING,
@@ -22,7 +22,7 @@ const fetchBugsError = (error) => ({
 const fetchBugs = (productId, versionId) => (dispatch) => {
   dispatch(fetchBugsFetching())
 
-  getBugs(productId, versionId)
+  fetchBugList(productId, versionId)
     .then((bugs) => dispatch(fetchBugsSuccess(bugs)))
     .catch(() => {
       dispatch(fetchBugsError("Couldn't get data :("))
