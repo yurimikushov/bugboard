@@ -1,4 +1,5 @@
 import { FETCH_PRODUCT_VERSIONS } from '../constants/ActionTypes'
+import { getProductVersions } from '../api'
 
 const fetchProductVersionFetching = () => ({
   type: FETCH_PRODUCT_VERSIONS.FETCHING,
@@ -21,14 +22,7 @@ const fetchProductVersionError = (error) => ({
 const fetchProductVersions = (productId) => (dispatch) => {
   dispatch(fetchProductVersionFetching())
 
-  fetch(`http://localhost:3004/products/${productId}/versions`)
-    .then((res) => {
-      if (!res.ok) {
-        return Promise.reject(res)
-      }
-
-      return res.json()
-    })
+  getProductVersions(productId)
     .then((versions) => dispatch(fetchProductVersionSuccess(versions)))
     .catch(() => dispatch(fetchProductVersionError("Couldn't get data :(")))
 }

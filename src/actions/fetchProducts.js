@@ -1,4 +1,5 @@
 import { FETCH_PRODUCTS } from '../constants/ActionTypes'
+import { getProducts } from '../api'
 
 const fetchProductsFetching = () => ({
   type: FETCH_PRODUCTS.FETCHING,
@@ -21,14 +22,7 @@ const fetchProductsError = (error) => ({
 const fetchProducts = () => (dispatch) => {
   dispatch(fetchProductsFetching())
 
-  fetch('http://localhost:3004/products')
-    .then((res) => {
-      if (!res.ok) {
-        return Promise.reject(res)
-      }
-
-      return res.json()
-    })
+  getProducts()
     .then((products) => dispatch(fetchProductsSuccess(products)))
     .catch(() => dispatch(fetchProductsError("Couldn't get data :(")))
 }

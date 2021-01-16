@@ -1,4 +1,5 @@
 import { FETCH_BUGS } from '../constants/ActionTypes'
+import { getBugs } from '../api'
 
 const fetchBugsFetching = () => ({
   type: FETCH_BUGS.FETCHING,
@@ -21,16 +22,7 @@ const fetchBugsError = (error) => ({
 const fetchBugs = (productId, versionId) => (dispatch) => {
   dispatch(fetchBugsFetching())
 
-  fetch(
-    `http://localhost:3004/products/${productId}/versions/${versionId}/bugs`
-  )
-    .then((res) => {
-      if (!res.ok) {
-        return Promise.reject(res)
-      }
-
-      return res.json()
-    })
+  getBugs(productId, versionId)
     .then((bugs) => dispatch(fetchBugsSuccess(bugs)))
     .catch(() => {
       dispatch(fetchBugsError("Couldn't get data :("))
