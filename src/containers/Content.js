@@ -1,9 +1,9 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Navigation from '../containers/Navigation'
-import ProductList from '../containers/ProductList'
-import ProductVersionList from '../containers/ProductVersionList'
-import BugList from '../containers/BugList'
+import Navigation from './Navigation'
+import ProductList from './ProductList'
+import ProductVersionList from './ProductVersionList'
+import BugList from './BugList'
 
 function Content() {
   return (
