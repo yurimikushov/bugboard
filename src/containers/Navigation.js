@@ -1,5 +1,15 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Navigation from '../components/Navigation'
+
+const NavigationContainer = ({ breadcrumbs }) => (
+  <Navigation breadcrumbs={breadcrumbs} />
+)
+
+NavigationContainer.propTypes = {
+  breadcrumbs: PropTypes.array,
+}
 
 const getProductTitle = (state, productId) => {
   const product = state.products.data.filter(
@@ -54,4 +64,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Navigation)
+export default connect(mapStateToProps)(NavigationContainer)

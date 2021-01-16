@@ -5,7 +5,7 @@ import ProductList from './ProductList'
 import ProductVersionList from './ProductVersionList'
 import BugList from './BugList'
 
-const Content = () => (
+const ContentContainer = () => (
   <main className='container'>
     <Navigation />
     <Switch>
@@ -25,4 +25,4 @@ const Content = () => (
   </main>
 )
 
-export default Content
+export default ContentContainer
