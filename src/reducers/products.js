@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS } from '../constants/ActionTypes'
+import { FETCH_PRODUCTS } from '../constants/action-types'
 
 const initialState = {
   isFetching: false,

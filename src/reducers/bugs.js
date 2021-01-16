@@ -1,4 +1,4 @@
-import { FETCH_BUGS } from '../constants/ActionTypes'
+import { FETCH_BUGS } from '../constants/action-types'
 
 const initialState = {
   isFetching: false,
