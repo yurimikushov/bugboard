@@ -1,13 +1,11 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Navigation from './Navigation'
 import ProductList from './ProductList'
 import ProductVersionList from './ProductVersionList'
 import BugList from './BugList'
 
 const ContentContainer = () => (
   <main className='container'>
-    <Navigation />
     <Switch>
       <Route exact path='/'>
         <ProductList />
