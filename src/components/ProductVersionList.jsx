@@ -1,34 +1,23 @@
-import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React from 'react'
 import PropTypes from 'prop-types'
 import ProductVersion from './ProductVersion'
 import Spinner from './Spinner'
 import InfoAlert from './InfoAlert'
 import ErrorAlert from './ErrorAlert'
 
-const ProductVersionList = (props) => {
-  const { fetchProductVersions, isFetching, error, productVersions } = props
-  const { productId } = useParams()
-
-  useEffect(() => {
-    fetchProductVersions(productId)
-    // eslint-disable-next-line
-  }, [])
-
+const ProductVersionList = ({ productId, versions, isFetching, error }) => {
   const needToShowLoader = isFetching
-  const needToShowProductVersions =
-    !isFetching && !error && productVersions.length > 0
-  const needToShowNoInfoAlert =
-    !isFetching && !error && productVersions.length === 0
+  const needToShowVersions = !isFetching && !error && versions.length > 0
+  const needToShowNoInfoAlert = !isFetching && !error && versions.length === 0
   const needToShowErrorAlert = !!error
 
   return (
     <div className='versions'>
       <h2>Versions</h2>
       {needToShowLoader && <Spinner />}
-      {needToShowProductVersions && (
+      {needToShowVersions && (
         <ul className='list-group list-group-flush'>
-          {productVersions.map((version) => (
+          {versions.map((version) => (
             <ProductVersion
               key={version.id}
               productId={productId}
@@ -45,10 +34,10 @@ const ProductVersionList = (props) => {
 }
 
 ProductVersionList.propTypes = {
-  fetchProductVersions: PropTypes.func.isRequired,
+  productId: PropTypes.string.isRequired,
+  versions: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
-  productVersions: PropTypes.array.isRequired,
 }
 
 export default ProductVersionList

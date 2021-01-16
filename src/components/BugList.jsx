@@ -1,19 +1,11 @@
-import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React  from 'react'
 import PropTypes from 'prop-types'
 import Bug from './Bug'
 import Spinner from './Spinner'
 import InfoAlert from './InfoAlert'
 import ErrorAlert from './ErrorAlert'
 
-const BugList = ({ fetchBugs, isFetching, error, bugs })  => {
-  const { productId, versionId } = useParams()
-
-  useEffect(() => {
-    fetchBugs(productId, versionId)
-    // eslint-disable-next-line
-  }, [])
-
+const BugList = ({ bugs, isFetching, error })  => {
   const needToShowLoader = isFetching
   const needToShowBugs = !isFetching && !error && bugs.length > 0
   const needToShowNoInfoAlert = !isFetching && !error && bugs.length === 0
@@ -37,10 +29,9 @@ const BugList = ({ fetchBugs, isFetching, error, bugs })  => {
 }
 
 BugList.propTypes = {
-  fetchBugs: PropTypes.func.isRequired,
+  bugs: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
-  bugs: PropTypes.array.isRequired,
 }
 
 export default BugList

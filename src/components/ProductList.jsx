@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
 import Spinner from './Spinner'
 import InfoAlert from './InfoAlert'
 import ErrorAlert from './ErrorAlert'
 
-const ProductList = ({ fetchProducts, isFetching, error, products }) => {
-  useEffect(() => {
-    fetchProducts()
-    // eslint-disable-next-line
-  }, [])
-
+const ProductList = ({ products, isFetching, error }) => {
   const needToShowLoader = isFetching
   const needToShowProducts = !isFetching && !error && products.length > 0
   const needToShowNoInfoAlert = !isFetching && !error && products.length === 0
@@ -34,10 +29,9 @@ const ProductList = ({ fetchProducts, isFetching, error, products }) => {
 }
 
 ProductList.propTypes = {
-  fetchProducts: PropTypes.func.isRequired,
+  products: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
-  products: PropTypes.array.isRequired,
 }
 
 export default ProductList
