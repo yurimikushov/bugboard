@@ -20,7 +20,14 @@ const ProductListContainer = ({
     return product
   })
 
-  return <ProductList data={products} isFetching={isFetching} error={error} />
+  return (
+    <ProductList
+      dataListName='products'
+      products={products}
+      isFetching={isFetching}
+      error={error}
+    />
+  )
 }
 
 ProductListContainer.propTypes = {

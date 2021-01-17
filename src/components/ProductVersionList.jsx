@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import withDynamicFetching from './WithDynamicFetching'
 import ProductVersion from './ProductVersion'
 
-const ProductVersionList = ({ data }) => (
+const ProductVersionList = ({ versions }) => (
   <ul className='list-group list-group-flush'>
-    {data.map((version) => (
+    {versions.map((version) => (
       <ProductVersion
         key={version.id}
         title={version.title}
@@ -16,7 +16,7 @@ const ProductVersionList = ({ data }) => (
 )
 
 ProductVersionList.propTypes = {
-  data: PropTypes.array.isRequired,
+  versions: PropTypes.array.isRequired,
 }
 
 export default withDynamicFetching(ProductVersionList)

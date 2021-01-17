@@ -24,7 +24,12 @@ const ProductVersionListContainer = ({
   })
 
   return (
-    <ProductVersionList data={versions} isFetching={isFetching} error={error} />
+    <ProductVersionList
+      dataListName='versions'
+      versions={versions}
+      isFetching={isFetching}
+      error={error}
+    />
   )
 }
 

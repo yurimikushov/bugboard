@@ -3,16 +3,16 @@ import PropTypes from 'prop-types'
 import withDynamicFetching from './WithDynamicFetching'
 import Bug from './Bug'
 
-const BugList = ({ data }) => (
+const BugList = ({ bugs }) => (
   <ul className='list-group list-group-flush'>
-    {data.map((bug) => (
+    {bugs.map((bug) => (
       <Bug key={bug.id} id={bug.id} description={bug.description} />
     ))}
   </ul>
 )
 
 BugList.propTypes = {
-  data: PropTypes.array.isRequired,
+  bugs: PropTypes.array.isRequired,
 }
 
 export default withDynamicFetching(BugList)

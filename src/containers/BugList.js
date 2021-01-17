@@ -13,7 +13,14 @@ const BugListContainer = ({ fetchBugs, bugs, isFetching, error }) => {
     // eslint-disable-next-line
   }, [])
 
-  return <BugList data={bugs} isFetching={isFetching} error={error} />
+  return (
+    <BugList
+      dataListName='bugs'
+      bugs={bugs}
+      isFetching={isFetching}
+      error={error}
+    />
+  )
 }
 
 BugListContainer.propTypes = {

@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 import withDynamicFetching from './WithDynamicFetching'
 import Product from './Product'
 
-const ProductList = ({ data }) => (
+const ProductList = ({ products }) => (
   <ul className='list-group list-group-flush'>
-    {data.map((product) => (
+    {products.map((product) => (
       <Product key={product.id} title={product.title} href={product.href} />
     ))}
   </ul>
 )
 ProductList.propTypes = {
-  data: PropTypes.array.isRequired,
+  products: PropTypes.array.isRequired,
 }
 
 export default withDynamicFetching(ProductList)
