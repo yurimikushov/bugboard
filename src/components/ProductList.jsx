@@ -6,7 +6,7 @@ import Product from './Product'
 const ProductList = ({ data }) => (
   <ul className='list-group list-group-flush'>
     {data.map((product) => (
-      <Product key={product.id} id={product.id} title={product.title} />
+      <Product key={product.id} title={product.title} href={product.href} />
     ))}
   </ul>
 )

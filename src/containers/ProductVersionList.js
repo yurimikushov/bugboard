@@ -18,13 +18,13 @@ const ProductVersionListContainer = ({
     // eslint-disable-next-line
   }, [])
 
+  versions = versions.map((version) => {
+    version.href = `/products/${productId}/versions/${version.id}/bugs`
+    return version
+  })
+
   return (
-    <ProductVersionList
-      productId={productId}
-      data={versions}
-      isFetching={isFetching}
-      error={error}
-    />
+    <ProductVersionList data={versions} isFetching={isFetching} error={error} />
   )
 }
 

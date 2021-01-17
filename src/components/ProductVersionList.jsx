@@ -3,21 +3,19 @@ import PropTypes from 'prop-types'
 import withDynamicFetching from './WithDynamicFetching'
 import ProductVersion from './ProductVersion'
 
-const ProductVersionList = ({ productId, data }) => (
+const ProductVersionList = ({ data }) => (
   <ul className='list-group list-group-flush'>
     {data.map((version) => (
       <ProductVersion
         key={version.id}
-        productId={productId}
-        versionId={version.id}
         title={version.title}
+        href={version.href}
       />
     ))}
   </ul>
 )
 
 ProductVersionList.propTypes = {
-  productId: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
 }
 

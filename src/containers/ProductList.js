@@ -15,6 +15,11 @@ const ProductListContainer = ({
     // eslint-disable-next-line
   }, [])
 
+  products = products.map((product) => {
+    product.href = `/products/${product.id}/versions`
+    return product
+  })
+
   return <ProductList data={products} isFetching={isFetching} error={error} />
 }
 
