@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchProductVersions } from '../actions'
+import { changeAppTitleToVersions, fetchProductVersions } from '../actions'
 import ProductVersionList from '../components/ProductVersionList'
 
 const ProductVersionListContainer = ({
+  changeAppTitleToVersions,
   fetchProductVersions,
   versions,
   isFetching,
@@ -14,6 +15,7 @@ const ProductVersionListContainer = ({
   const { productId } = useParams()
 
   useEffect(() => {
+    changeAppTitleToVersions()
     fetchProductVersions(productId)
     // eslint-disable-next-line
   }, [])
@@ -34,6 +36,7 @@ const ProductVersionListContainer = ({
 }
 
 ProductVersionListContainer.propTypes = {
+  changeAppTitleToVersions: PropTypes.func.isRequired,
   fetchProductVersions: PropTypes.func.isRequired,
   versions: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
@@ -47,6 +50,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  changeAppTitleToVersions: () => dispatch(changeAppTitleToVersions()),
   fetchProductVersions: (productId) =>
     dispatch(fetchProductVersions(productId)),
 })

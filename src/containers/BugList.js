@@ -2,13 +2,20 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchBugs } from '../actions'
+import { changeAppTitleToBugs, fetchBugs } from '../actions'
 import BugList from '../components/BugList'
 
-const BugListContainer = ({ fetchBugs, bugs, isFetching, error }) => {
+const BugListContainer = ({
+  changeAppTitleToBugs,
+  fetchBugs,
+  bugs,
+  isFetching,
+  error,
+}) => {
   const { productId, versionId } = useParams()
 
   useEffect(() => {
+    changeAppTitleToBugs()
     fetchBugs(productId, versionId)
     // eslint-disable-next-line
   }, [])
@@ -24,6 +31,7 @@ const BugListContainer = ({ fetchBugs, bugs, isFetching, error }) => {
 }
 
 BugListContainer.propTypes = {
+  changeAppTitleToBugs: PropTypes.func.isRequired,
   fetchBugs: PropTypes.func.isRequired,
   bugs: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
@@ -37,6 +45,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  changeAppTitleToBugs: () => dispatch(changeAppTitleToBugs()),
   fetchBugs: (productId, versionId) =>
     dispatch(fetchBugs(productId, versionId)),
 })

@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchProducts } from '../actions'
+import { changeAppTitleToProducts, fetchProducts } from '../actions'
 import ProductList from '../components/ProductList'
 
 const ProductListContainer = ({
+  changeAppTitleToProducts,
   fetchProducts,
   products,
   isFetching,
   error,
 }) => {
   useEffect(() => {
+    changeAppTitleToProducts()
     fetchProducts()
     // eslint-disable-next-line
   }, [])
@@ -31,6 +33,7 @@ const ProductListContainer = ({
 }
 
 ProductListContainer.propTypes = {
+  changeAppTitleToProducts: PropTypes.func.isRequired,
   fetchProducts: PropTypes.func.isRequired,
   products: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
@@ -44,6 +47,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  changeAppTitleToProducts: () => dispatch(changeAppTitleToProducts()),
   fetchProducts: () => dispatch(fetchProducts()),
 })
 
