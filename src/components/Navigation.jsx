@@ -13,7 +13,7 @@ const styles = {
 
 const Navigation = ({ breadcrumbs }) => (
   <nav aria-label='breadcrumb'>
-    <ol className='breadcrumb mt-2 mb-2'>
+    <ol className='breadcrumb m-2'>
       {breadcrumbs.map((breadcrumb) => {
         return (
           <li className='breadcrumb-item' key={breadcrumb.title}>

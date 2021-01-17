@@ -9,12 +9,10 @@ const BugboardApp = ({ appTitle }) => {
   useEffect(() => (document.title = appTitle), [appTitle])
 
   return (
-    <div style={{ maxWidth: '950px', margin: '0 auto' }}>
-      <div className='container vh-100 shadow-lg bg-white'>
-        <Header />
-        <Navigation />
-        <Content />
-      </div>
+    <div className='container vh-100'>
+      <Header />
+      <Navigation />
+      <Content />
     </div>
   )
 }
