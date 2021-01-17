@@ -1,43 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import withDynamicFetching from './WithDynamicFetching'
 import ProductVersion from './ProductVersion'
-import Spinner from './Spinner'
-import NoInfoAlert from './NoInfoAlert'
-import ErrorAlert from './ErrorAlert'
 
-const ProductVersionList = ({ productId, versions, isFetching, error }) => {
-  const needToShowLoader = isFetching
-  const needToShowVersions = !isFetching && !error && versions.length > 0
-  const needToShowNoInfoAlert = !isFetching && !error && versions.length === 0
-  const needToShowErrorAlert = !!error
-
-  return (
-    <div className='versions'>
-      <h2>Versions</h2>
-      {needToShowLoader && <Spinner />}
-      {needToShowVersions && (
-        <ul className='list-group list-group-flush'>
-          {versions.map((version) => (
-            <ProductVersion
-              key={version.id}
-              productId={productId}
-              versionId={version.id}
-              title={version.title}
-            />
-          ))}
-        </ul>
-      )}
-      {needToShowNoInfoAlert && <NoInfoAlert />}
-      {needToShowErrorAlert && <ErrorAlert errorText={error} />}
-    </div>
-  )
-}
+const ProductVersionList = ({ productId, data }) => (
+  <ul className='list-group list-group-flush'>
+    {data.map((version) => (
+      <ProductVersion
+        key={version.id}
+        productId={productId}
+        versionId={version.id}
+        title={version.title}
+      />
+    ))}
+  </ul>
+)
 
 ProductVersionList.propTypes = {
   productId: PropTypes.string.isRequired,
-  versions: PropTypes.array.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  error: PropTypes.string.isRequired,
+  data: PropTypes.array.isRequired,
 }
 
-export default ProductVersionList
+export default withDynamicFetching(ProductVersionList)

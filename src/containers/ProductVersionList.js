@@ -21,7 +21,7 @@ const ProductVersionListContainer = ({
   return (
     <ProductVersionList
       productId={productId}
-      versions={versions}
+      data={versions}
       isFetching={isFetching}
       error={error}
     />

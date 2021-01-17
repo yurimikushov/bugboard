@@ -15,9 +15,7 @@ const ProductListContainer = ({
     // eslint-disable-next-line
   }, [])
 
-  return (
-    <ProductList products={products} isFetching={isFetching} error={error} />
-  )
+  return <ProductList data={products} isFetching={isFetching} error={error} />
 }
 
 ProductListContainer.propTypes = {
