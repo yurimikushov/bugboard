@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { changeAppTitleToVersions, fetchProductVersions } from '../actions'
 import ProductVersionList from '../components/ProductVersionList'
 
+/* eslint "react-hooks/exhaustive-deps": "off" */
+
 const ProductVersionListContainer = ({
   changeAppTitleToVersions,
   fetchProductVersions,
@@ -14,11 +16,8 @@ const ProductVersionListContainer = ({
 }) => {
   const { productId } = useParams()
 
-  useEffect(() => {
-    changeAppTitleToVersions()
-    fetchProductVersions(productId)
-    // eslint-disable-next-line
-  }, [])
+  useEffect(() => changeAppTitleToVersions(), [])
+  useEffect(() => fetchProductVersions(productId), [productId])
 
   versions = versions.map((version) => {
     version.href = `/products/${productId}/versions/${version.id}/bugs`

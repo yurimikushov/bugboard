@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { changeAppTitleToProducts, fetchProducts } from '../actions'
 import ProductList from '../components/ProductList'
 
+/* eslint "react-hooks/exhaustive-deps": "off" */
+
 const ProductListContainer = ({
   changeAppTitleToProducts,
   fetchProducts,
@@ -11,11 +13,8 @@ const ProductListContainer = ({
   isFetching,
   error,
 }) => {
-  useEffect(() => {
-    changeAppTitleToProducts()
-    fetchProducts()
-    // eslint-disable-next-line
-  }, [])
+  useEffect(() => changeAppTitleToProducts(), [])
+  useEffect(() => fetchProducts(), [])
 
   products = products.map((product) => {
     product.href = `/products/${product.id}/versions`
