@@ -1,11 +1,4 @@
 {
-  "plugins": ["react"],
-  "extends": [
-    "react-app",
-    "react-app/jest",
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ],
   "env": {
     "browser": true,
     "es2021": true
@@ -16,6 +9,15 @@
     },
     "ecmaVersion": 12,
     "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "no-unused-vars": "warn"
   }
-
 }
