@@ -14,11 +14,9 @@ const BugListContainer = ({
 }) => {
   const { productId, versionId } = useParams()
 
-  useEffect(() => {
-    changeAppTitleToBugs()
-    fetchBugs(productId, versionId)
-    // eslint-disable-next-line
-  }, [])
+  /* eslint "react-hooks/exhaustive-deps": "off" */
+  useEffect(() => changeAppTitleToBugs(), [])
+  useEffect(() => fetchBugs(productId, versionId), [productId, versionId])
 
   return (
     <BugList
