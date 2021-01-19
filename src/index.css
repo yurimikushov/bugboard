@@ -7,6 +7,11 @@ html {
   background: var(--bs-light);
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   max-width: 950px;
   margin: auto;
