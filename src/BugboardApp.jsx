@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Header from './containers/Header'
-import Navigation from './containers/Navigation'
 import Content from './containers/Content'
 
 const BugboardApp = ({ appTitle }) => {
@@ -11,7 +10,6 @@ const BugboardApp = ({ appTitle }) => {
   return (
     <div className='container'>
       <Header />
-      <Navigation />
       <Content />
     </div>
   )

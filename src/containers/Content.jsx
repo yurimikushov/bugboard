@@ -1,37 +1,29 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
+import withNavigation from './WithNavigation'
 import ProductList from './ProductList'
 import ProductVersionList from './ProductVersionList'
 import BugList from './BugList'
 
-const ContentContainer = ({ appTitle }) => (
-  <main className='container'>
-    <h2>{appTitle}</h2>
-    <Switch>
-      <Route exact path='/'>
-        <ProductList />
-      </Route>
-      <Route exact path='/products/:productId/versions'>
-        <ProductVersionList />
-      </Route>
-      <Route exact path='/products/:productId/versions/:versionId/bugs'>
-        <BugList />
-      </Route>
-      <Route path='*'>
-        <Redirect to='/' />
-      </Route>
-    </Switch>
-  </main>
+const ProductListWithNavigation = withNavigation(ProductList)
+const ProductVersionListWithNavigation = withNavigation(ProductVersionList)
+const BugListWithNavigation = withNavigation(BugList)
+
+const ContentContainer = () => (
+  <Switch>
+    <Route exact path='/'>
+      <ProductListWithNavigation />
+    </Route>
+    <Route exact path='/products/:productId/versions'>
+      <ProductVersionListWithNavigation />
+    </Route>
+    <Route exact path='/products/:productId/versions/:versionId/bugs'>
+      <BugListWithNavigation />
+    </Route>
+    <Route path='*'>
+      <Redirect to='/' />
+    </Route>
+  </Switch>
 )
 
-ContentContainer.propTypes = {
-  appTitle: PropTypes.string.isRequired,
-}
-
-const mapStateToProps = (state) => ({
-  appTitle: state.appTitle,
-})
-
-export default connect(mapStateToProps)(ContentContainer)
+export default ContentContainer
