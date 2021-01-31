@@ -6,12 +6,6 @@ import ErrorAlert from './ErrorAlert'
 
 const withDynamicFetching = (WrappedComponent) => {
   const WithDynamicFetching = (props) => {
-    const wrappedComponentProps = { ...props }
-
-    delete wrappedComponentProps.dataListName
-    delete wrappedComponentProps.isFetching
-    delete wrappedComponentProps.error
-
     const data = props[props.dataListName]
     const { isFetching, error } = props
 
@@ -19,6 +13,12 @@ const withDynamicFetching = (WrappedComponent) => {
     const needToShowData = !isFetching && !error && data.length > 0
     const needToShowNoInfoAlert = !isFetching && !error && data.length === 0
     const needToShowErrorAlert = !!error
+
+    const wrappedComponentProps = { ...props }
+
+    delete wrappedComponentProps.dataListName
+    delete wrappedComponentProps.isFetching
+    delete wrappedComponentProps.error
 
     return (
       <>
