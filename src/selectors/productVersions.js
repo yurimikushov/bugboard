@@ -1,5 +1,5 @@
 const getProductVersionTitle = (versions, id) => {
-  const version = versions.find((versions) => (versions.id = id))
+  const version = versions.find((version) => version.id === id)
 
   return (version && version.title) || ''
 }
