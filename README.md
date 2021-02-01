@@ -1,10 +1,13 @@
 # Bugboard
 
-This web app display a bugs by a products versions.
+This web app shows a bugs: products -> product versions -> bugs.
+
+![Preview](docs/img/preview.png)
 
 # Feature
 
-It will be written soon.
+* `Bootstrap v5` is used for stylizing
+* A fake API is used in `development` mode
 
 # Usage
 
