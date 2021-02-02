@@ -1,4 +1,4 @@
-# Bugboard
+# 🐞 Bugboard
 
 This web app shows a bugs: products -> product versions -> bugs.
 
