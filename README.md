@@ -7,9 +7,6 @@ This web app shows a bugs: products -> product versions -> bugs.
 # Feature
 
 * `Bootstrap v5` is used for stylizing
-* A fake API is used in `development` mode. You can see:
-  * Routes [here](fake-api-routes.json)
-  * And fake data [here](fake-api-db.json)
 
 # Usage
 
