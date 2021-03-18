@@ -1,8 +1,9 @@
-export const fetchProducts = () =>
-  fetch('http://localhost:3004/products').then((res) => {
-    if (!res.ok) {
-      return Promise.reject(res)
-    }
+export const fetchProducts = async () => {
+  const res = await fetch('http://localhost:3004/products')
 
-    return res.json()
-  })
+  if (!res.ok) {
+    return Promise.reject(res)
+  }
+
+  return res.json()
+}

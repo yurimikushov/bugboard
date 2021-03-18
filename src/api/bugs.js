@@ -1,10 +1,11 @@
-export const fetchBugs = (productId, versionId) =>
-  fetch(
+export const fetchBugs = async (productId, versionId) => {
+  const res = await fetch(
     `http://localhost:3004/products/${productId}/versions/${versionId}/bugs`
-  ).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(res)
-    }
+  )
 
-    return res.json()
-  })
+  if (!res.ok) {
+    return Promise.reject(res)
+  }
+
+  return res.json()
+}

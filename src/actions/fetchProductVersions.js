@@ -19,12 +19,16 @@ const fetchProductVersionError = (error) => ({
   },
 })
 
-const fetchProductVersions = (productId) => (dispatch) => {
+const fetchProductVersions = (productId) => async (dispatch) => {
   dispatch(fetchProductVersionFetching())
 
-  fetchProductVersionList(productId)
-    .then((versions) => dispatch(fetchProductVersionSuccess(versions)))
-    .catch(() => dispatch(fetchProductVersionError("Couldn't get data :(")))
+  try {
+    dispatch(
+      fetchProductVersionSuccess(await fetchProductVersionList(productId))
+    )
+  } catch (err) {
+    dispatch(fetchProductVersionError("Couldn't get data :("))
+  }
 }
 
 export default fetchProductVersions

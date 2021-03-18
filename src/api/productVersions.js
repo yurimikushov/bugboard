@@ -1,8 +1,11 @@
-export const fetchProductVersions = (productId) =>
-  fetch(`http://localhost:3004/products/${productId}/versions`).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(res)
-    }
+export const fetchProductVersions = async (productId) => {
+  const res = await fetch(
+    `http://localhost:3004/products/${productId}/versions`
+  )
 
-    return res.json()
-  })
+  if (!res.ok) {
+    return Promise.reject(res)
+  }
+
+  return res.json()
+}

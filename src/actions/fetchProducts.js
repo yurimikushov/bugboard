@@ -19,12 +19,14 @@ const fetchProductsError = (error) => ({
   },
 })
 
-const fetchProducts = () => (dispatch) => {
+const fetchProducts = () => async (dispatch) => {
   dispatch(fetchProductsFetching())
 
-  fetchProductList()
-    .then((products) => dispatch(fetchProductsSuccess(products)))
-    .catch(() => dispatch(fetchProductsError("Couldn't get data :(")))
+  try {
+    dispatch(fetchProductsSuccess(await fetchProductList()))
+  } catch (err) {
+    dispatch(fetchProductsError("Couldn't get data :("))
+  }
 }
 
 export default fetchProducts

@@ -19,14 +19,14 @@ const fetchBugsError = (error) => ({
   },
 })
 
-const fetchBugs = (productId, versionId) => (dispatch) => {
+const fetchBugs = (productId, versionId) => async (dispatch) => {
   dispatch(fetchBugsFetching())
 
-  fetchBugList(productId, versionId)
-    .then((bugs) => dispatch(fetchBugsSuccess(bugs)))
-    .catch(() => {
-      dispatch(fetchBugsError("Couldn't get data :("))
-    })
+  try {
+    dispatch(fetchBugsSuccess(await fetchBugList(productId, versionId)))
+  } catch (err) {
+    dispatch(fetchBugsError("Couldn't get data :("))
+  }
 }
 
 export default fetchBugs
