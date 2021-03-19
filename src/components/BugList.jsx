@@ -4,7 +4,7 @@ import withDynamicFetching from './WithDynamicFetching'
 import Bug from './Bug'
 
 const BugList = ({ bugs }) => (
-  <ul className='list-group list-group-flush'>
+  <ul className='bug-items list-group list-group-flush'>
     {bugs.map((bug) => (
       <Bug key={bug.id} title={bug.id} description={bug.description} />
     ))}
@@ -16,4 +16,3 @@ BugList.propTypes = {
 }
 
 export default withDynamicFetching(BugList)
-

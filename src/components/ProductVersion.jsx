@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 const ProductVersion = ({ title, href }) => (
-  <li className='list-group-item'>
+  <li className='product-version-item list-group-item'>
     <Link className='nav-link p-0' to={href}>
       {title}
     </Link>

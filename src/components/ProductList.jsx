@@ -4,7 +4,7 @@ import withDynamicFetching from './WithDynamicFetching'
 import Product from './Product'
 
 const ProductList = ({ products }) => (
-  <ul className='list-group list-group-flush'>
+  <ul className='product-items list-group list-group-flush'>
     {products.map((product) => (
       <Product key={product.id} title={product.title} href={product.href} />
     ))}

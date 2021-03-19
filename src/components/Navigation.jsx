@@ -12,11 +12,11 @@ const styles = {
 }
 
 const Navigation = ({ breadcrumbs }) => (
-  <nav aria-label='breadcrumb'>
-    <ol className='breadcrumb m-2'>
+  <nav aria-label='nav breadcrumb'>
+    <ol className='nav-items breadcrumb m-2'>
       {breadcrumbs.map((breadcrumb) => {
         return (
-          <li className='breadcrumb-item' key={breadcrumb.title}>
+          <li className='nav-item breadcrumb-item' key={breadcrumb.title}>
             <Link
               to={breadcrumb.href}
               style={breadcrumb.isActive ? styles.activeBreadcrumb : null}

@@ -4,20 +4,15 @@ import { connect } from 'react-redux'
 import Navigation from './Navigation'
 
 const withNavigation = (WrappedComponent) => {
-  const WithNavigation = (props) => {
-    const wrappedComponentProps = { ...props }
-    delete wrappedComponentProps.appTitle
-
-    return (
-      <>
-        <Navigation />
-        <main className='container'>
-          <h2>{props.appTitle}</h2>
-          <WrappedComponent {...wrappedComponentProps} />
-        </main>
-      </>
-    )
-  }
+  const WithNavigation = ({ appTitle, ...props }) => (
+    <>
+      <Navigation />
+      <main className='content container'>
+        <h2 className='content__title'>{appTitle}</h2>
+        <WrappedComponent {...props} />
+      </main>
+    </>
+  )
 
   const wrappedComponentName =
     WrappedComponent.displayName || WrappedComponent.name || 'Component'

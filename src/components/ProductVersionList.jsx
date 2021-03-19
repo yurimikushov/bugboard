@@ -4,7 +4,7 @@ import withDynamicFetching from './WithDynamicFetching'
 import ProductVersion from './ProductVersion'
 
 const ProductVersionList = ({ versions }) => (
-  <ul className='list-group list-group-flush'>
+  <ul className='product-version-items list-group list-group-flush'>
     {versions.map((version) => (
       <ProductVersion
         key={version.id}

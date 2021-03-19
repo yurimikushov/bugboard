@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const ErrorAlert = ({ errorText }) => (
-  <p className='alert alert-danger'>{errorText}</p>
+  <p className='error-alert alert alert-danger'>{errorText}</p>
 )
 
 ErrorAlert.propTypes = {
