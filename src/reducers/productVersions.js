@@ -6,8 +6,8 @@ const initialState = {
   error: '',
 }
 
-const productVersionsReducer = (state = initialState, action) => {
-  switch (action.type) {
+const productVersionsReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case FETCH_PRODUCT_VERSIONS.FETCHING:
       return {
         ...state,
@@ -17,13 +17,13 @@ const productVersionsReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        data: action.payload.data,
+        data: payload.data,
       }
     case FETCH_PRODUCT_VERSIONS.ERROR:
       return {
         ...state,
         isFetching: false,
-        error: action.payload.error,
+        error: payload.error,
       }
     default:
       return state

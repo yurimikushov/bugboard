@@ -6,8 +6,8 @@ const initialState = {
   error: '',
 }
 
-const bugsReducer = (state = initialState, action) => {
-  switch (action.type) {
+const bugsReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case FETCH_BUGS.FETCHING:
       return {
         ...state,
@@ -17,13 +17,13 @@ const bugsReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        data: action.payload.data,
+        data: payload.data,
       }
     case FETCH_BUGS.ERROR:
       return {
         ...state,
         isFetching: false,
-        error: action.payload.error,
+        error: payload.error,
       }
     default:
       return state

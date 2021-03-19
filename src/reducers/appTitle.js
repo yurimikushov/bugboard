@@ -1,7 +1,7 @@
 import { CHANGE_APP_TITLE_TO } from '../constants/action-types'
 
-const appTitleReducer = (state = 'Products', action) => {
-  switch (action.type) {
+const appTitleReducer = (state = 'Products', { type }) => {
+  switch (type) {
     case CHANGE_APP_TITLE_TO.PRODUCTS:
       return 'Products'
     case CHANGE_APP_TITLE_TO.VERSIONS:
