@@ -1,4 +1,4 @@
-import { CHANGE_APP_TITLE_TO } from '../constants/action-types'
+import { CHANGE_APP_TITLE_TO } from '../constants/actionTypes'
 
 const appTitleReducer = (state = 'Products', { type }) => {
   switch (type) {

@@ -1,4 +1,4 @@
-import { FETCH_BUGS } from '../constants/action-types'
+import { FETCH_BUGS } from '../constants/actionTypes'
 import { fetchBugs as fetchBugList } from '../api'
 
 const fetchBugsFetching = () => ({

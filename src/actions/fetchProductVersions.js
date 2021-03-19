@@ -1,4 +1,4 @@
-import { FETCH_PRODUCT_VERSIONS } from '../constants/action-types'
+import { FETCH_PRODUCT_VERSIONS } from '../constants/actionTypes'
 import { fetchProductVersions as fetchProductVersionList } from '../api'
 
 const fetchProductVersionFetching = () => ({
