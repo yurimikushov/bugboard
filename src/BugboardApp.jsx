@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Header from './containers/Header'
+import Navigation from './containers/Navigation'
 import ProductList from './containers/ProductList'
 import ProductVersionList from './containers/ProductVersionList'
 import BugList from './containers/BugList'
@@ -18,6 +19,7 @@ const BugboardApp = ({ appTitle }) => {
   return (
     <div className='container'>
       <Header />
+      <Navigation />
       <main className='content container'>
         <h2 className='content__title'>{appTitle}</h2>
         <Switch>
