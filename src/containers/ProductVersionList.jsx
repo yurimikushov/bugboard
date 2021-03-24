@@ -14,9 +14,14 @@ const ProductVersionListContainer = ({
 }) => {
   const { productId } = useParams()
 
-  /* eslint "react-hooks/exhaustive-deps": "off" */
-  useEffect(() => changeAppTitleToVersions(), [])
-  useEffect(() => fetchProductVersions(productId), [productId])
+  useEffect(() => {
+    changeAppTitleToVersions()
+    /* eslint "react-hooks/exhaustive-deps": "off" */
+  }, [])
+
+  useEffect(() => {
+    fetchProductVersions(productId)
+  }, [productId])
 
   versions = versions.map((version) => {
     version.href = `/products/${productId}/versions/${version.id}/bugs`

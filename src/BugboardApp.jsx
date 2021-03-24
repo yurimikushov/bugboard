@@ -11,10 +11,14 @@ import BugList from './containers/BugList'
 const BugboardApp = ({ appTitle }) => {
   const history = useHistory()
 
-  // eslint-disable-next-line
-  useEffect(() => history.push('/'), [])
+  useEffect(() => {
+    history.push('/')
+    /* eslint "react-hooks/exhaustive-deps": "off" */
+  }, [])
 
-  useEffect(() => (document.title = appTitle), [appTitle])
+  useEffect(() => {
+    document.title = appTitle
+  }, [appTitle])
 
   return (
     <div className='container'>

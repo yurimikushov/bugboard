@@ -11,9 +11,15 @@ const ProductListContainer = ({
   isFetching,
   error,
 }) => {
-  /* eslint "react-hooks/exhaustive-deps": "off" */
-  useEffect(() => changeAppTitleToProducts(), [])
-  useEffect(() => fetchProducts(), [])
+  useEffect(() => {
+    changeAppTitleToProducts()
+    /* eslint "react-hooks/exhaustive-deps": "off" */
+  }, [])
+
+  useEffect(() => {
+    fetchProducts()
+    /* eslint "react-hooks/exhaustive-deps": "off" */
+  }, [])
 
   products = products.map((product) => {
     product.href = `/products/${product.id}/versions`
