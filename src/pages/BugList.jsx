@@ -1,18 +1,11 @@
 import React from 'react'
-import Header from '../containers/Header'
-import Navigation from '../containers/Navigation'
-import PageTitle from '../containers/PageTitle'
+import PageTemplate from './Template'
 import BugList from '../containers/BugList'
 
-const ProductListPage = () => (
-  <>
-    <Header />
-    <Navigation />
-    <main className='content container'>
-      <PageTitle />
-      <BugList />
-    </main>
-  </>
+const BugListPage = () => (
+  <PageTemplate>
+    <BugList />
+  </PageTemplate>
 )
 
-export default ProductListPage
+export default BugListPage
